@@ -1,0 +1,1323 @@
+/* Integration recovery: preserve the source worktree's product-card stack without editing the host stylesheet. */
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card {
+  --device-card-w: clamp(156px, 20vw, 240px) !important;
+}
+
+/*
+ * Reassert the recovered device scale with the full Case scope. A more
+ * specific legacy selector otherwise collapses the intro deck to 58–94px.
+ */
+@media (min-width: 701px) {
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-product-card {
+    --device-card-w: clamp(156px, 20vw, 240px) !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-product-wall {
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-project-intro {
+    gap: 4px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-project-intro h3 {
+    font-size: clamp(20px, 2vw, 24px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-product-deck {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card[data-stack-offset="1"] {
+  opacity: 0.72 !important;
+  filter: saturate(0.94) !important;
+  transform: translate(42%, -46%) rotate(8deg) scale(0.78) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card[data-stack-offset="2"] {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translate(140%, -38%) rotate(12deg) scale(0.62) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card[data-stack-offset="3"] {
+  opacity: 0.66 !important;
+  filter: saturate(0.92) !important;
+  transform: translate(-122%, -46%) rotate(-8deg) scale(0.78) !important;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card {
+    --device-card-w: clamp(148px, 34vw, 190px) !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"]
+    .case-page-frame.has-colada-page[data-page-type="colada-intro"]
+    .colada-product-card {
+    --device-card-w: clamp(148px, 34vw, 190px) !important;
+  }
+}
+
+/* Journal result: the generated image is the hero, with the template switcher kept as a narrow rail. */
+@media (min-width: 701px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only {
+    position: relative !important;
+    grid-template-columns: minmax(0, 1fr) minmax(170px, .42fr) !important;
+    grid-template-rows: minmax(0, 1fr) auto !important;
+    grid-template-areas: "image styles" "demo reset" !important;
+    align-items: center !important;
+    padding: 28px 8px 8px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only > .colada-canvas-label {
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    z-index: 2 !important;
+    width: auto !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only > .colada-generated-sheet {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    align-self: center !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only > .colada-generated-sheet img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: contain !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-template-list {
+    align-self: center !important;
+  }
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-paper-panel {
+  align-items: stretch !important;
+}
+
+/* Keep the three evidence cards legible inside the fixed CRT page boundary. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-item {
+  grid-template-columns: 28px minmax(0, 1fr) !important;
+  grid-template-rows: 30px 8px 8px minmax(0, 1fr) !important;
+  row-gap: 2px !important;
+  padding: 4px 0 !important;
+  overflow: hidden !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-heading {
+  display: flex !important;
+  grid-column: 1 / -1 !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  height: 30px !important;
+  overflow: hidden !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-heading-copy {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-eyebrow {
+  font-size: 6px !important;
+  line-height: 8px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-heading-copy h4 {
+  font-size: 10px !important;
+  line-height: 11px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-value {
+  font-size: 8px !important;
+  line-height: 10px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-copy,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-evidence {
+  grid-column: 1 / -1 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  font-size: 6px !important;
+  line-height: 8px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-viz {
+  grid-column: 1 / -1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  align-content: end !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-viz-label {
+  font-size: 6px !important;
+  line-height: 8px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-viz-readout {
+  font-size: 11px !important;
+  line-height: 13px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-viz-candidate {
+  font-size: 6px !important;
+  line-height: 7px !important;
+}
+
+/* Final pixel pass: evidence media and result copy stay hard-edged and readable. */
+.screen-panel-case[data-case-theme="colada"] .colada-case-cover,
+.screen-panel-case[data-case-theme="colada"] .colada-results-showcase img.colada-showcase-sheet,
+.screen-panel-case[data-case-theme="colada"] .colada-results-showcase img.colada-showcase-phone {
+  border-radius: 0 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-item {
+  grid-template-rows: 30px 10px minmax(0, 1fr) minmax(0, 1fr) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-copy,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-evidence {
+  white-space: normal !important;
+  font-size: 7px !important;
+  line-height: 9px !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+/* Colada product switch motion: each newly rendered sample enters instead of hard-cutting. */
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-deck {
+  animation: colada-product-deck-swap 360ms steps(4, end);
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card[data-stack-offset="0"] img {
+  animation: colada-product-image-settle 360ms steps(4, end);
+}
+
+@keyframes colada-product-deck-swap {
+  0% {
+    opacity: 0.42;
+    transform: translateX(24px);
+  }
+
+  55% {
+    opacity: 0.88;
+    transform: translateX(-4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes colada-product-image-settle {
+  0% {
+    opacity: 0.25;
+    transform: translateX(12px) scale(0.92);
+  }
+
+  65% {
+    opacity: 0.9;
+    transform: translateX(-2px) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-deck,
+  .case-page-frame.has-colada-page[data-page-type="colada-intro"] .colada-product-card[data-stack-offset="0"] img {
+    animation: none !important;
+  }
+}
+
+/* Colada User Case alignment: every scenario shares the same media and action baselines. */
+.case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-grid {
+  align-items: stretch !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-card.colada-case-card.colada-case-card {
+  height: 100% !important;
+  min-height: 0 !important;
+  grid-template-rows: minmax(180px, 1fr) minmax(130px, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-media {
+  height: auto !important;
+  min-height: 0 !important;
+  align-self: stretch !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-copy {
+  min-height: 0 !important;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto !important;
+  align-content: stretch !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-view-button {
+  margin-top: auto !important;
+  align-self: end !important;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-grid {
+    align-items: start !important;
+    height: auto !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-card.colada-case-card.colada-case-card {
+    height: auto !important;
+    grid-template-rows: 190px auto !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-media {
+    height: 190px !important;
+    min-height: 190px !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-showcase"] .colada-case-copy {
+    grid-template-rows: auto auto auto auto auto !important;
+  }
+}
+
+/* Colada Journal board: real travel pieces sit on a textured paper surface with loose placements. */
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-board.colada-canvas-board {
+  display: block !important;
+  position: relative !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  isolation: isolate !important;
+  background-color: #f6e7d2 !important;
+  background-image:
+    linear-gradient(rgba(92, 61, 72, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 61, 72, .08) 1px, transparent 1px),
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .58), transparent 28%),
+    radial-gradient(circle at 82% 70%, rgba(232, 145, 122, .16), transparent 25%) !important;
+  background-size: 22px 22px, 22px 22px, auto, auto !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material.colada-canvas-material {
+  position: absolute !important;
+  z-index: 2 !important;
+  display: grid !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 6px !important;
+  gap: 4px !important;
+  border: 2px solid var(--colada-ink) !important;
+  border-radius: 3px !important;
+  background: #fffaf0 !important;
+  box-shadow: 5px 6px 0 rgba(86, 48, 79, .24) !important;
+  text-align: left !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-photo {
+  left: 5% !important;
+  top: 14% !important;
+  width: 49% !important;
+  height: 64% !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  transform: rotate(-3deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-sticker {
+  right: 6% !important;
+  top: 12% !important;
+  width: 27% !important;
+  height: 57% !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  transform: rotate(5deg) !important;
+  background: #c9dfcf !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-text {
+  left: 43% !important;
+  bottom: 10% !important;
+  width: 31% !important;
+  height: 22% !important;
+  z-index: 4 !important;
+  transform: rotate(-2deg) !important;
+  background: #f3b4c6 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-date {
+  right: 5% !important;
+  bottom: 5% !important;
+  width: 27% !important;
+  height: 14% !important;
+  z-index: 5 !important;
+  transform: rotate(3deg) !important;
+  background: #f4d36b !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  border: 1px solid var(--colada-ink) !important;
+  border-radius: 2px !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-sticker .colada-canvas-piece-image {
+  clip-path: polygon(8% 4%, 88% 0, 98% 14%, 94% 88%, 76% 98%, 12% 94%, 0 76%, 4% 18%) !important;
+  border: 4px solid #fffaf0 !important;
+  outline: 2px solid var(--colada-ink) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-caption {
+  display: block !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  color: var(--colada-ink) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(7px, 1.1vw, 12px) !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-note {
+  display: grid !important;
+  align-content: center !important;
+  gap: 3px !important;
+  height: 100% !important;
+  color: var(--colada-ink) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-note b {
+  color: var(--colada-accent-deep) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(9px, 1.4vw, 15px) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-note strong {
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(8px, 1.2vw, 14px) !important;
+  line-height: 1.05 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-piece-note span {
+  font-size: clamp(7px, 1vw, 11px) !important;
+  line-height: 1.1 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-sticker {
+  position: absolute !important;
+  z-index: 6 !important;
+  display: block !important;
+  pointer-events: none !important;
+  color: var(--colada-accent-deep) !important;
+  font-family: Georgia, serif !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-shadow: 2px 2px 0 #fffaf0 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-sticker-heart {
+  left: 59% !important;
+  top: 17% !important;
+  color: #d95d86 !important;
+  font-size: clamp(20px, 3vw, 38px) !important;
+  transform: rotate(-12deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-sticker-smile {
+  left: 48% !important;
+  top: 7% !important;
+  color: #de9c2d !important;
+  font-size: clamp(15px, 2.4vw, 30px) !important;
+  transform: rotate(9deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-sticker-label {
+  right: 4% !important;
+  bottom: 1% !important;
+  padding: 4px 6px !important;
+  border: 2px solid var(--colada-ink) !important;
+  background: #fffaf0 !important;
+  color: var(--colada-accent-deep) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(7px, 1vw, 11px) !important;
+  transform: rotate(-6deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-generated-sheet img {
+  object-fit: contain !important;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-photo {
+    left: 5% !important;
+    top: 15% !important;
+    width: 50% !important;
+    height: 63% !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-sticker {
+    right: 5% !important;
+    top: 12% !important;
+    width: 28% !important;
+    height: 54% !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-text {
+    left: 41% !important;
+    bottom: 10% !important;
+    width: 34% !important;
+    height: 22% !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-material-date {
+    right: 4% !important;
+    bottom: 5% !important;
+    width: 29% !important;
+  }
+}
+
+/* Colada generated output: the selected template composes the same board preset into a landscape result. */
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-travel-output.colada-travel-output,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-travel-output.colada-travel-output {
+  --output-paper: #f8efd9;
+  --output-ink: #3a1f3c;
+  --output-accent: #e8917a;
+  --output-mint: #8fc8b6;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-travel-output[data-colada-output-template="scrapbook"] .colada-output-board,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-travel-output[data-colada-output-template="scrapbook"] .colada-output-board {
+  --output-paper: #fff1d0;
+  --output-ink: #31213f;
+  --output-accent: #d8735b;
+  --output-mint: #b89ad4;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-travel-output[data-colada-output-template="sticker-note"] .colada-output-board,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-travel-output[data-colada-output-template="sticker-note"] .colada-output-board {
+  --output-paper: #fff0f4;
+  --output-ink: #371d44;
+  --output-accent: #f08db4;
+  --output-mint: #8edfc4;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-board,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-board {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  border: 3px solid var(--output-ink) !important;
+  background-color: var(--output-paper) !important;
+  background-image:
+    linear-gradient(rgba(92, 61, 72, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 61, 72, .08) 1px, transparent 1px),
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .56), transparent 28%) !important;
+  background-size: 22px 22px, 22px 22px, auto !important;
+  box-shadow: 5px 6px 0 color-mix(in oklab, var(--output-ink) 22%, transparent) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-photo,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-photo {
+  position: absolute !important;
+  display: block !important;
+  z-index: 2 !important;
+  object-fit: cover !important;
+  border: 3px solid #fffaf0 !important;
+  outline: 2px solid var(--output-ink) !important;
+  box-shadow: 5px 6px 0 color-mix(in oklab, var(--output-ink) 24%, transparent) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-city,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-city {
+  left: 6% !important;
+  top: 20% !important;
+  width: 48% !important;
+  height: 56% !important;
+  transform: rotate(-3deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-person,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-person {
+  left: 58% !important;
+  top: 17% !important;
+  width: 19% !important;
+  height: 59% !important;
+  transform: rotate(4deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-portrait,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-portrait {
+  right: 6% !important;
+  top: 28% !important;
+  width: 18% !important;
+  height: 48% !important;
+  transform: rotate(-5deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-brand,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-brand,
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-date,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-date,
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-city-label,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-city-label,
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-note,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-note,
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-caption,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-caption,
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-location,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-location {
+  position: absolute !important;
+  z-index: 5 !important;
+  display: block !important;
+  color: var(--output-ink) !important;
+  font-family: var(--pixel-font) !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-brand,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-brand {
+  left: 4% !important;
+  top: 5% !important;
+  font-size: clamp(7px, 1.2vw, 16px) !important;
+  letter-spacing: .18em !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-date,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-date {
+  right: 4% !important;
+  top: 4% !important;
+  padding: 4px 7px !important;
+  border: 2px solid var(--output-ink) !important;
+  background: var(--output-mint) !important;
+  font-size: clamp(7px, 1vw, 13px) !important;
+  transform: rotate(3deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-city-label,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-city-label {
+  left: 8% !important;
+  top: 79% !important;
+  font-size: clamp(7px, 1vw, 13px) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-note,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-note {
+  left: 59% !important;
+  top: 9% !important;
+  padding: 3px 6px !important;
+  background: var(--output-mint) !important;
+  font-size: clamp(6px, .9vw, 11px) !important;
+  transform: rotate(4deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-caption,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-caption {
+  left: 5% !important;
+  bottom: 4% !important;
+  font-size: clamp(8px, 1.5vw, 20px) !important;
+  letter-spacing: .14em !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-location,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-location {
+  right: 7% !important;
+  bottom: 5% !important;
+  font-size: clamp(7px, 1vw, 13px) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-tape,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-tape {
+  position: absolute !important;
+  z-index: 6 !important;
+  display: block !important;
+  width: 12% !important;
+  height: 5% !important;
+  background: var(--output-accent) !important;
+  opacity: .9 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-tape-a,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-tape-a {
+  left: 12% !important;
+  top: 13% !important;
+  transform: rotate(-12deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-tape-b,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-tape-b {
+  left: 42% !important;
+  top: 77% !important;
+  transform: rotate(8deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-sticker,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-sticker {
+  position: absolute !important;
+  z-index: 7 !important;
+  display: block !important;
+  color: var(--output-accent) !important;
+  font-family: Georgia, serif !important;
+  font-size: clamp(18px, 3vw, 40px) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-shadow: 2px 2px 0 #fffaf0 !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-star,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-star {
+  left: 49% !important;
+  bottom: 8% !important;
+  transform: rotate(-12deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-heart,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-heart {
+  left: 84% !important;
+  top: 13% !important;
+  transform: rotate(12deg) !important;
+}
+
+.case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-output-cross,
+.case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-output-cross {
+  left: 3% !important;
+  bottom: 8% !important;
+  color: var(--output-mint) !important;
+  font-size: clamp(13px, 2vw, 26px) !important;
+}
+
+/* A template change replaces the generated asset, so the new landscape page gets a visible handoff. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only > .colada-generated-sheet {
+  animation: colada-result-sheet-enter 420ms cubic-bezier(.2, .8, .2, 1) both !important;
+  will-change: opacity, transform;
+}
+
+@keyframes colada-result-sheet-enter {
+  0% {
+    opacity: .18;
+    transform: translateX(18px) rotate(1.4deg) scale(.96);
+  }
+
+  62% {
+    opacity: .92;
+    transform: translateX(-3px) rotate(-.35deg) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-result-only > .colada-generated-sheet {
+    animation: none !important;
+    will-change: auto;
+  }
+}
+
+/* Colada P1: the legacy copy node is hidden, so it must not reserve a second grid row. */
+@media (min-width: 701px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page:has(> .case-page.colada-intro-page) {
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page:has(> .case-page.colada-intro-page) > .case-page.colada-page {
+    grid-row: 1 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+}
+
+/* Colada P4: evidence cards should show their viz content instead of clipping it inside equal rows. */
+@media (min-width: 701px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-item {
+    grid-template-rows: 28px 8px 8px auto !important;
+    row-gap: 1px !important;
+    align-content: start !important;
+    padding: 3px 0 !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-viz {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    align-content: start !important;
+    gap: 1px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-viz-meter {
+    grid-template-rows: 8px 13px 6px 7px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-viz-bars {
+    grid-template-rows: 8px 18px 7px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-viz-path {
+    grid-template-rows: 8px 19px !important;
+  }
+}
+
+/* Colada P4: replace the dense metric rail with a readable resume evidence panel. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-proof {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: grid !important;
+  grid-template-rows: auto auto auto auto auto !important;
+  align-content: start !important;
+  gap: 8px !important;
+  padding: 10px !important;
+  border: 3px solid var(--colada-ink) !important;
+  border-radius: 0 !important;
+  background: var(--colada-paper) !important;
+  box-shadow: 4px 4px 0 var(--colada-accent-deep) !important;
+  overflow: hidden !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-label {
+  display: block !important;
+  color: var(--colada-accent-deep) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: .12em !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-title {
+  margin: 0 !important;
+  color: var(--colada-ink) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(22px, 2.6vw, 34px) !important;
+  font-weight: 800 !important;
+  line-height: .98 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-copy {
+  margin: 0 !important;
+  color: var(--colada-ink) !important;
+  font-size: clamp(11px, 1.1vw, 15px) !important;
+  font-weight: 700 !important;
+  line-height: 1.38 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metrics {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  align-self: stretch !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric {
+  min-width: 0 !important;
+  min-height: 92px !important;
+  display: grid !important;
+  align-content: center !important;
+  gap: 4px !important;
+  padding: 10px !important;
+  border: 3px solid var(--colada-ink) !important;
+  background: var(--colada-pink) !important;
+  box-shadow: 4px 4px 0 var(--colada-lilac) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric-label {
+  display: block !important;
+  color: var(--colada-ink) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric-value {
+  display: block !important;
+  color: var(--colada-accent-deep) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(28px, 4vw, 44px) !important;
+  font-weight: 800 !important;
+  line-height: .92 !important;
+  white-space: nowrap !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric-note {
+  display: block !important;
+  color: var(--colada-muted) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-product {
+  margin: 0 !important;
+  color: var(--colada-ink) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-source {
+  margin: 0 !important;
+  color: var(--colada-muted) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: 7px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 701px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-proof {
+    height: 100% !important;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto !important;
+    gap: 10px !important;
+    padding: 14px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-copy {
+    max-width: 34ch !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric {
+    min-height: 108px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-result-proof {
+    min-height: 260px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric {
+    min-height: 74px !important;
+    padding: 8px !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-result"] .colada-proof-metric-value {
+    font-size: clamp(22px, 8vw, 32px) !important;
+  }
+}
+
+/* Colada pixel UI pass: strengthen the existing scrapbook theme without changing its flow. */
+.screen-panel-case[data-case-theme="colada"] {
+  --colada-pixel-unit: 4px;
+  --colada-pixel-border: 2px;
+  --colada-pixel-border-strong: 3px;
+  --colada-pixel-offset: 4px;
+  --colada-pixel-gap: 8px;
+  position: relative !important;
+  background: var(--colada-paper-deep) !important;
+  background-image: none !important;
+}
+
+.screen-panel-case[data-case-theme="colada"]::before,
+.screen-panel-case[data-case-theme="colada"]::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  pointer-events: none !important;
+}
+
+.screen-panel-case[data-case-theme="colada"]::before {
+  top: 8px !important;
+  left: 8px !important;
+  background: var(--colada-accent) !important;
+  box-shadow: 12px 0 0 var(--colada-yellow), 24px 0 0 var(--colada-mint), 0 12px 0 var(--colada-lilac) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"]::after {
+  right: 8px !important;
+  bottom: 8px !important;
+  background: var(--colada-mint) !important;
+  box-shadow: -12px 0 0 var(--colada-yellow), -24px 0 0 var(--colada-accent), 0 -12px 0 var(--colada-lilac) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] > .case-page-status,
+.screen-panel-case[data-case-theme="colada"] > .case-page-frame.has-colada-page {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] > .case-page-status {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] > .case-page-status > span {
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding: 5px 10px !important;
+  border: var(--colada-pixel-border-strong) solid var(--colada-ink) !important;
+  border-radius: 0 !important;
+  background: var(--colada-paper) !important;
+  box-shadow: var(--colada-pixel-offset) var(--colada-pixel-offset) 0 var(--colada-accent-deep) !important;
+  color: var(--colada-ink) !important;
+  font-family: var(--pixel-font) !important;
+  letter-spacing: .04em !important;
+  line-height: 1.1 !important;
+  overflow-wrap: anywhere !important;
+  text-shadow: 2px 2px 0 var(--colada-lilac) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-card,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-media,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-results-showcase,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof {
+  border-radius: 0 !important;
+  background-image: none !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-results-showcase,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof {
+  background-color: var(--colada-paper) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-deck,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-media {
+  background-color: var(--colada-paper-deep) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-results-showcase,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof {
+  box-shadow: var(--colada-pixel-offset) var(--colada-pixel-offset) 0 var(--colada-accent-deep) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-results-showcase,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof {
+  position: relative !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall::after,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel::before,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls::before,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 3 !important;
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  pointer-events: none !important;
+  background: var(--colada-accent) !important;
+  box-shadow: 12px 0 0 var(--colada-yellow), 0 12px 0 var(--colada-mint) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-wall::after {
+  right: 8px !important;
+  top: 8px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-paper-panel::before,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-controls::before {
+  right: 8px !important;
+  bottom: 8px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-proof::before {
+  right: 8px !important;
+  top: 8px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-media::before {
+  background: var(--colada-lilac) !important;
+  border-radius: 0 !important;
+  filter: none !important;
+  opacity: .32 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-media::after {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-card,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-phone-frame,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-icon,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-symbol,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-canvas-material,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-metric {
+  border-radius: 0 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-icon,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-symbol {
+  image-rendering: pixelated !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-cover,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-card img,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-canvas-piece-image,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-output-photo,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-generated-sheet img,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-sheet,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-phone {
+  image-rendering: auto !important;
+  filter: none !important;
+}
+
+/* Short labels and readouts use the bitmap role; paragraphs stay in the readable body font. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-intro-kicker,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-kicker,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-canvas-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-control-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-stamp,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-route,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-step-number,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journal-steps strong,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-title,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-metric-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-metric-value {
+  font-family: var(--pixel-font) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-label,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-showcase-stamp,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-case-route,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-proof-label {
+  letter-spacing: .06em !important;
+}
+
+/* Pixel controls: selected, focused, and pressed states change depth as well as color. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-arrow,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-dots button,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-view-button,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-generate,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journey-button,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-result-template-list .journal-template {
+  border-radius: 0 !important;
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end), background-color 120ms steps(2, end) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-arrow:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-dots button:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-view-button:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-generate:focus-visible,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journey-button:focus-visible {
+  outline: 3px solid var(--colada-accent) !important;
+  outline-offset: 3px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-arrow:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-dots button:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-view-button:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-generate:active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journey-button:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0 var(--colada-accent-deep) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-dots button.is-active,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle.is-selected,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template.is-selected {
+  position: relative !important;
+  z-index: 2 !important;
+  box-shadow: 4px 4px 0 var(--colada-accent-deep) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-arrow,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-product-dots button,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-material-toggle,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .journal-template,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-view-button,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-generate,
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page .colada-journey-button {
+    transition: none !important;
+  }
+}
+
+/* Keep the real journal board visible when the mobile workbench stacks vertically. */
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-paper-panel {
+    min-height: 278px !important;
+    grid-template-rows: auto 230px auto !important;
+  }
+
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-canvas-board.colada-canvas-board {
+    height: 230px !important;
+    min-height: 230px !important;
+  }
+}
+
+/* P3 next step: make the enabled action read as the next move, not a footer note. */
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-actions:has(.colada-journey-button[data-colada-journey="style"]) {
+  display: grid !important;
+  gap: 5px !important;
+  margin-top: auto !important;
+  padding-top: 8px !important;
+  border-top: 2px solid var(--colada-ink) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-actions:has(.colada-journey-button[data-colada-journey="style"])::before {
+  content: "NEXT STEP" !important;
+  display: block !important;
+  color: var(--colada-accent-deep) !important;
+  font-family: var(--pixel-font) !important;
+  font-size: 8px !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+  line-height: 1 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"] {
+  width: 100% !important;
+  min-height: 48px !important;
+  padding: 10px 14px !important;
+  border: 3px solid var(--colada-ink) !important;
+  background: var(--colada-accent) !important;
+  color: var(--colada-ink) !important;
+  box-shadow: 4px 4px 0 var(--colada-accent-deep) !important;
+  cursor: pointer !important;
+  font-family: var(--pixel-font) !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: .03em !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+  text-wrap: balance !important;
+  animation: colada-next-step-breathe 1600ms steps(3, end) infinite !important;
+  transform-origin: center bottom !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"]::after {
+  content: "→" !important;
+  display: inline-block !important;
+  margin-left: 8px !important;
+  font-size: 16px !important;
+  line-height: 0 !important;
+  vertical-align: -1px !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"]:hover,
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"]:focus-visible {
+  background: var(--colada-yellow) !important;
+  color: var(--colada-ink) !important;
+  transform: translate(-1px, -2px) !important;
+  box-shadow: 5px 6px 0 var(--colada-accent-deep) !important;
+  animation-play-state: paused !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"]:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0 var(--colada-accent-deep) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"]:disabled {
+  background: var(--colada-paper) !important;
+  color: var(--colada-muted) !important;
+  box-shadow: 3px 3px 0 var(--colada-lilac) !important;
+  cursor: not-allowed !important;
+  animation: none !important;
+}
+
+@keyframes colada-next-step-breathe {
+  0%, 100% {
+    opacity: .9;
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 var(--colada-accent-deep);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 0 var(--colada-accent-deep);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-panel-case[data-case-theme="colada"] .case-page-frame.has-colada-page[data-page-type="colada-journal"] .colada-journey-button[data-colada-journey="style"] {
+    animation: none !important;
+  }
+}

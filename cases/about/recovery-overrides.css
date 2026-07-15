@@ -1,0 +1,360 @@
+/* About Practice v2.1 formal implementation: scoped to the Practice page only. */
+.about-practice-page {
+  min-height: 0;
+}
+
+.about-practice-page .practice-map {
+  min-height: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  overflow: visible;
+}
+
+.about-practice-page .practice-track {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 88px minmax(0, 38px) minmax(0, 55px) minmax(0, 20px);
+  gap: 5px;
+  padding: 8px;
+  border: 2px solid oklch(0.16 0.055 145);
+  background: oklch(0.95 0.14 108 / 0.54);
+  box-shadow: 3px 3px 0 oklch(0.13 0.045 145 / 0.62);
+  text-align: left;
+  color: oklch(0.12 0.045 145);
+  overflow: hidden;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.about-practice-page .practice-track.is-active {
+  background: oklch(0.12 0.045 145);
+  box-shadow: 5px 5px 0 oklch(0.09 0.035 145 / 0.78);
+  color: oklch(0.91 0.20 104);
+  transform: translateY(-2px);
+}
+
+.about-practice-page .practice-track-select {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.about-practice-page .practice-track-select:focus-visible,
+.about-practice-page .practice-step:focus-visible {
+  outline: 2px solid oklch(0.76 0.18 94);
+  outline-offset: 2px;
+}
+
+.about-practice-page .practice-track-meta {
+  min-width: 0;
+  color: oklch(0.24 0.055 145 / 0.78);
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.about-practice-page .practice-track.is-active .practice-track-meta {
+  color: oklch(0.77 0.18 100);
+}
+
+.about-practice-page .practice-track-select strong {
+  min-width: 0;
+  color: inherit;
+  font-size: clamp(15px, 1.4vw, 21px);
+  font-weight: 950;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.about-practice-page .practice-vector {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 88px;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 2px dashed oklch(0.25 0.065 145 / 0.55);
+  background: oklch(0.94 0.16 106 / 0.36);
+}
+
+.about-practice-page .practice-track.is-active .practice-vector {
+  border-color: oklch(0.70 0.16 98 / 0.82);
+  background: oklch(0.16 0.055 145 / 0.72);
+}
+
+.about-practice-page .practice-vector img {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.about-practice-page .practice-vector img[hidden],
+.about-practice-page .practice-asset-fallback[hidden] {
+  display: none;
+}
+
+.about-practice-page .practice-asset-fallback {
+  position: static;
+  display: block;
+  padding: 8px;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.about-practice-page .practice-vector.has-error {
+  border-style: solid;
+}
+
+.about-practice-page .practice-summary {
+  min-width: 0;
+  margin: 0;
+  color: oklch(0.18 0.05 145 / 0.86);
+  max-height: 38px;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.about-practice-page .practice-track.is-active .practice-summary {
+  color: oklch(0.88 0.15 105);
+}
+
+.about-practice-page .practice-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  min-width: 0;
+  align-content: start;
+}
+
+.about-practice-page .practice-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 5px;
+  min-width: 0;
+  min-height: 25px;
+  align-items: center;
+  padding: 4px 5px;
+  border: 1px solid oklch(0.24 0.06 145 / 0.44);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.about-practice-page .practice-step-static {
+  cursor: default;
+}
+
+.about-practice-page .practice-step-index {
+  color: oklch(0.34 0.06 145 / 0.82);
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+}
+
+.about-practice-page .practice-step strong {
+  min-width: 0;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.about-practice-page .practice-track.is-active .practice-step {
+  border-color: oklch(0.75 0.15 100 / 0.68);
+  color: oklch(0.91 0.20 104);
+}
+
+.about-practice-page .practice-track.is-active .practice-step-index {
+  color: oklch(0.73 0.16 100);
+}
+
+.about-practice-page .practice-step.is-active,
+.about-practice-page .practice-step[aria-pressed="true"] {
+  background: oklch(0.79 0.18 100 / 0.22);
+  border-color: oklch(0.85 0.19 100);
+}
+
+.about-practice-page .practice-step-note {
+  min-width: 0;
+  min-height: 20px;
+  max-height: 20px;
+  margin: 0;
+  color: oklch(0.25 0.06 145 / 0.85);
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+}
+
+.about-practice-page .practice-track.is-active .practice-step-note {
+  color: oklch(0.89 0.16 104);
+}
+
+@media (max-width: 760px) {
+  .about-practice-page .practice-map {
+    gap: 8px;
+  }
+
+  .about-practice-page .practice-track {
+    grid-template-rows: auto 82px minmax(0, 32px) minmax(0, 48px) minmax(0, 20px);
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .about-practice-page .practice-vector {
+    height: 82px;
+  }
+
+  .about-practice-page .practice-track-select strong {
+    font-size: 14px;
+  }
+
+  .about-practice-page .practice-track-meta,
+  .about-practice-page .practice-summary,
+  .about-practice-page .practice-step-note {
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  .about-practice-page .practice-step {
+    min-height: 22px;
+    padding: 3px;
+  }
+
+  .about-practice-page .practice-step strong,
+  .about-practice-page .practice-step-index {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-practice-page .practice-map {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    align-items: start;
+  }
+
+  .about-practice-page .practice-track {
+    grid-template-rows: auto 54px minmax(0, 26px) minmax(0, 44px) minmax(0, 18px);
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .about-practice-page .practice-track:not(.is-active) {
+    grid-template-rows: auto 46px;
+    height: max-content;
+    align-content: start;
+  }
+
+  .about-practice-page .practice-track:not(.is-active) .practice-summary,
+  .about-practice-page .practice-track:not(.is-active) .practice-flow,
+  .about-practice-page .practice-track:not(.is-active) .practice-step-note {
+    display: none;
+  }
+
+  .about-practice-page .practice-vector,
+  .about-practice-page .practice-track:not(.is-active) .practice-vector {
+    height: 54px;
+  }
+
+  .about-practice-page .practice-track:not(.is-active) .practice-vector {
+    height: 46px;
+  }
+
+  .about-practice-page .practice-track-select {
+    gap: 2px;
+  }
+
+  .about-practice-page .practice-track-select strong {
+    font-size: 10px;
+    line-height: 1.05;
+  }
+
+  .about-practice-page .practice-track-meta,
+  .about-practice-page .practice-summary,
+  .about-practice-page .practice-step-note {
+    font-size: 7px;
+    line-height: 1.15;
+  }
+
+  .about-practice-page .practice-step {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 3px;
+    min-height: 22px;
+    padding: 3px;
+  }
+
+  .about-practice-page .practice-step strong,
+  .about-practice-page .practice-step-index {
+    font-size: 7px;
+  }
+}
+
+/* About Profile formal page: keep the production header compact without copying the prototype frame. */
+.case-page-frame[data-page-type="about-profile"] .case-page-copy {
+  gap: 10px !important;
+  padding: 8px 10px !important;
+}
+
+.case-page-frame[data-page-type="about-profile"] .case-page-copy h3 {
+  max-width: 12.5em;
+  font-size: clamp(19px, 1.8vw, 23px);
+  line-height: 0.98;
+}
+
+.case-page-frame[data-page-type="about-profile"] .case-page-copy p {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+@media (max-width: 760px) {
+  .case-page-frame[data-page-type="about-profile"] .case-page-copy {
+    grid-template-columns: 1fr;
+    gap: 5px !important;
+    padding: 7px 9px !important;
+  }
+
+  .case-page-frame[data-page-type="about-profile"] .case-page-copy h3 {
+    max-width: none;
+    font-size: 19px;
+  }
+
+  .case-page-frame[data-page-type="about-profile"] .case-page-copy p {
+    font-size: 10px;
+    line-height: 1.28;
+  }
+}

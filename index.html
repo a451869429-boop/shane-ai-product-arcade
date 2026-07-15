@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Shane · AI Product Arcade</title>
+    <meta
+      name="description"
+      content="Shane 的 AI Native Product Portfolio，以复古街机柜终端展示 AI 图像、办公 Agent、创作工具和独立项目案例。"
+    >
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css?v=integration-preview-20260715-7">
+  </head>
+  <body class="arcade-page" data-active-case="about" data-screen-mode="select" data-experience="off">
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <header class="site-header">
+      <a class="brand-mark" href="#main" aria-label="回到首页">
+        <span>Shane</span>
+        <small>AI Product Arcade</small>
+      </a>
+      <div class="header-actions">
+        <button
+          class="music-toggle"
+          type="button"
+          data-music-toggle
+          aria-label="开启背景音乐"
+          aria-pressed="false"
+          disabled
+        >
+          <span class="music-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span data-music-label>Music Off</span>
+        </button>
+        <p class="header-mode">Single Cabinet Mode</p>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="arcade-hero" aria-labelledby="hero-title">
+        <div class="hero-meta">
+          <p>Retro Portfolio Terminal</p>
+          <span data-case-progress>01 / 05</span>
+        </div>
+
+        <article
+          class="arcade-cabinet"
+          data-arcade-cabinet
+          tabindex="0"
+          aria-label="AI 产品经理作品集街机柜，可用方向键切换项目，Enter 进入当前案例，Escape 返回选择"
+        >
+          <div class="cabinet-marquee" aria-hidden="true">
+            <span>Shane</span>
+            <strong>AI Product Arcade</strong>
+          </div>
+
+          <div class="cabinet-body">
+            <div class="screen-bezel">
+              <div class="crt-screen" aria-live="polite">
+                <div class="crt-boot-overlay" data-crt-boot>
+                  <button class="crt-start-button" type="button" data-crt-start aria-label="启动电视并播放音乐">
+                    <span aria-hidden="true">▶</span>
+                    <strong>Start</strong>
+                  </button>
+                </div>
+                <section class="screen-panel screen-panel-select" data-screen-panel="select" inert>
+                  <div class="screen-chrome" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <div class="screen-header">
+                    <span>Select a Card</span>
+                    <span data-screen-count>01 / 05</span>
+                  </div>
+
+                  <div class="home-card-layout">
+                    <div class="home-card-rail" role="tablist" aria-label="首页卡片选择">
+                      <button type="button" role="tab" class="home-stack-card is-active" data-case-target="about">
+                        <span>Profile · AI-native PM</span>
+                        <strong>About Me</strong>
+                        <em>工作经历 / 方法论 / 兴趣底色</em>
+                      </button>
+                      <button type="button" role="tab" class="home-stack-card" data-case-target="colada">
+                        <span>AI Image · 0→1</span>
+                        <strong>Colada</strong>
+                        <em>贴纸、拼贴、手账生成产品</em>
+                      </button>
+                      <button type="button" role="tab" class="home-stack-card" data-case-target="dokie">
+                        <span>Agent · Workspace</span>
+                        <strong>Dokie</strong>
+                        <em>办公 Agent 与多格式工作流</em>
+                      </button>
+                      <button type="button" role="tab" class="home-stack-card" data-case-target="creator">
+                        <span>Creator App · AI Editing</span>
+                        <strong>Viva Video</strong>
+                        <em>AI 图 / 视频 / 音频玩法落地</em>
+                      </button>
+                      <button type="button" role="tab" class="home-stack-card" data-case-target="indie">
+                        <span>Indie · SoundsNomad</span>
+                        <strong>SoundsNomad</strong>
+                        <em>移动音频产品 / Field Flow</em>
+                      </button>
+                    </div>
+
+                    <section class="home-detail-card" aria-labelledby="hero-title">
+                      <div class="case-visual" data-case-visual>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="case-readout">
+                        <p data-case-kicker>Profile · AI-native PM</p>
+                        <h1 id="hero-title" data-case-title>About Me</h1>
+                        <span data-case-summary>
+                          动画专业背景转 AI 产品经理，连接审美、产品判断、Agent workflow 和可验证开发。
+                        </span>
+                        <button class="screen-play-button" type="button" data-start-case>
+                          <span>Play</span>
+                        </button>
+                      </div>
+                    </section>
+                  </div>
+
+                  <div class="screen-footer">
+                    <span>Press Play</span>
+                  </div>
+                </section>
+
+                <section class="screen-panel screen-panel-case" data-screen-panel="case" hidden inert>
+                  <div class="case-page-status" aria-live="polite">
+                    <span data-case-page-label>Project Intro</span>
+                  </div>
+
+                  <div class="case-page-frame" data-case-page></div>
+                </section>
+              </div>
+            </div>
+
+            <div class="control-panel" aria-label="街机柜控制区" inert>
+              <div class="control-buttons">
+                <button type="button" class="case-puck is-active" data-case-target="about" aria-label="选择 About Me">
+                  <span></span>
+                  <b>About</b>
+                </button>
+                <button type="button" class="case-puck" data-case-target="colada" aria-label="选择 Colada">
+                  <span></span>
+                  <b>Colada</b>
+                </button>
+                <button type="button" class="case-puck" data-case-target="dokie" aria-label="选择 Dokie">
+                  <span></span>
+                  <b>Dokie</b>
+                </button>
+                <button type="button" class="case-puck" data-case-target="creator" aria-label="选择 Viva Video">
+                  <span></span>
+                  <b>Viva Video</b>
+                </button>
+                <button type="button" class="case-puck" data-case-target="indie" aria-label="选择 SoundsNomad">
+                  <span></span>
+                  <b>Sounds</b>
+                </button>
+              </div>
+
+              <div class="transport-controls" aria-label="街机操作键">
+                <button class="stop-button" type="button" data-stop-game aria-label="停止并回到首页">
+                  <span></span>
+                  <b>Stop</b>
+                </button>
+                <div class="direction-controls" aria-label="方向切换">
+                  <button class="direction-button" type="button" data-step-back aria-label="上一个项目或上一页">
+                    <span aria-hidden="true">‹</span>
+                    <b>Prev</b>
+                  </button>
+                  <button class="direction-button" type="button" data-step-forward aria-label="下一个项目或下一页">
+                    <span aria-hidden="true">›</span>
+                    <b>Next</b>
+                  </button>
+                </div>
+                <button class="start-button" type="button" data-start-case>
+                  <span>Play</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="speaker-row" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <audio
+      data-site-soundtrack
+      src="assets/audio/town-hop-theme.mp3"
+      preload="metadata"
+      loop
+    ></audio>
+    <script src="app.js?v=integration-preview-20260715-8" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,1582 @@
+/* SoundsNomad formal Case surface. Keep all selectors inside the Case namespace. */
+.case-page-frame.has-soundsnomad-page {
+  --sn-bg: oklch(0.12 0.045 268);
+  --sn-bg-deep: oklch(0.08 0.035 268);
+  --sn-panel: oklch(0.18 0.055 268);
+  --sn-panel-light: oklch(0.24 0.07 268);
+  --sn-ink: oklch(0.96 0.035 268);
+  --sn-muted: oklch(0.76 0.045 268);
+  --sn-dim: oklch(0.60 0.055 268);
+  --sn-cyan: oklch(0.82 0.15 185);
+  --sn-lilac: oklch(0.78 0.16 285);
+  --sn-yellow: oklch(0.88 0.17 92);
+  --sn-pink: oklch(0.82 0.16 350);
+  --sn-border: 2px solid oklch(0.62 0.12 275 / 0.68);
+  --sn-shadow: 4px 4px 0 oklch(0.035 0.02 268 / 0.82);
+  color: var(--sn-ink);
+  background: var(--sn-bg);
+}
+
+.case-page-frame.has-soundsnomad-page > .case-page-copy {
+  z-index: 1;
+  padding: 0 8px 8px;
+  border-bottom: 2px solid oklch(0.55 0.12 275 / 0.5);
+  background: var(--sn-bg);
+}
+
+.case-page-frame.has-soundsnomad-page > .case-page-copy h3 {
+  max-width: 18em;
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: clamp(18px, 2.15vw, 26px);
+  line-height: 1.02;
+  text-shadow: 2px 2px 0 oklch(0.05 0.03 268 / 0.75);
+}
+
+.case-page-frame.has-soundsnomad-page > .case-page-copy p {
+  max-width: 46ch;
+  color: var(--sn-muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-page {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  color: var(--sn-ink);
+  background: var(--sn-bg);
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-page * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-page p,
+.case-page-frame.has-soundsnomad-page .sounds-page small,
+.case-page-frame.has-soundsnomad-page .sounds-page figcaption {
+  font-family: inherit;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-section-kicker,
+.case-page-frame.has-soundsnomad-page .sn-panel-label,
+.case-page-frame.has-soundsnomad-page .sn-card-kicker,
+.case-page-frame.has-soundsnomad-page .sn-evidence-stamp,
+.case-page-frame.has-soundsnomad-page .sn-device-stamp,
+.case-page-frame.has-soundsnomad-page .sn-map-label,
+.case-page-frame.has-soundsnomad-page .sn-pipeline-note {
+  color: var(--sn-cyan);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-stamp,
+.case-page-frame.has-soundsnomad-page .sn-device-stamp {
+  position: absolute;
+  z-index: 2;
+  padding: 4px 5px;
+  background: oklch(0.08 0.035 268 / 0.9);
+  color: var(--sn-yellow);
+  font-size: 7px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-frame,
+.case-page-frame.has-soundsnomad-page .sn-map-frame,
+.case-page-frame.has-soundsnomad-page .sn-field-proof,
+.case-page-frame.has-soundsnomad-page .sn-device-pane,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-pane {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: var(--sn-border);
+  background: var(--sn-bg-deep);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-frame::before,
+.case-page-frame.has-soundsnomad-page .sn-map-frame::before,
+.case-page-frame.has-soundsnomad-page .sn-device-pane::before,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-pane::before {
+  position: absolute;
+  inset: 4px;
+  z-index: 1;
+  border: 1px solid oklch(0.95 0.05 268 / 0.18);
+  content: "";
+  pointer-events: none;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-image,
+.case-page-frame.has-soundsnomad-page .sn-map-image,
+.case-page-frame.has-soundsnomad-page .sn-device-image,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-image,
+.case-page-frame.has-soundsnomad-page .sn-proof-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--sn-bg-deep);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-page,
+.case-page-frame.has-soundsnomad-page .sounds-intro-page {
+  grid-template-columns: minmax(0, 0.82fr) minmax(310px, 1.18fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-copy {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border: var(--sn-border);
+  background: var(--sn-bg-deep);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-decision-block {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border-left: 4px solid var(--sn-yellow);
+  background: oklch(0.19 0.055 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-decision-block strong,
+.case-page-frame.has-soundsnomad-page .sn-proof-heading span,
+.case-page-frame.has-soundsnomad-page .sn-evidence-heading span {
+  color: var(--sn-yellow);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-decision-block span,
+.case-page-frame.has-soundsnomad-page .sn-proof-foot,
+.case-page-frame.has-soundsnomad-page .sn-boundary-note {
+  margin: 0;
+  color: var(--sn-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-tag-row span,
+.case-page-frame.has-soundsnomad-page .sn-sound-tags span {
+  padding: 4px 6px;
+  border: 1px solid oklch(0.65 0.13 285 / 0.62);
+  color: var(--sn-lilac);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-proof {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  min-height: 0;
+  min-width: 0;
+  padding: 10px;
+  border: var(--sn-border);
+  background: var(--sn-panel);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-proof-heading,
+.case-page-frame.has-soundsnomad-page .sn-evidence-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-proof-heading strong,
+.case-page-frame.has-soundsnomad-page .sn-evidence-heading strong {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-proof-body {
+  display: grid;
+  grid-template-columns: minmax(118px, 0.8fr) minmax(0, 1.2fr);
+  gap: 10px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-evidence {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 4px;
+  min-height: 0;
+  margin: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-frame {
+  min-height: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-frame .sn-evidence-stamp {
+  right: 5px;
+  bottom: 5px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-intro-evidence figcaption,
+.case-page-frame.has-soundsnomad-page .sn-field-proof figcaption {
+  color: var(--sn-muted);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1.2;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list {
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  min-height: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list > div {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 2px 7px;
+  padding: 7px;
+  border-left: 2px solid oklch(0.55 0.08 268 / 0.55);
+  background: oklch(0.10 0.04 268 / 0.54);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list > div.is-core {
+  border-color: var(--sn-cyan);
+  background: oklch(0.25 0.08 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list b {
+  grid-row: span 2;
+  color: var(--sn-yellow);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list strong {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-proof-list small {
+  color: var(--sn-muted);
+  font-size: 9px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-proof-foot {
+  padding-top: 6px;
+  border-top: 1px solid oklch(0.56 0.10 268 / 0.42);
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-field-page {
+  grid-template-columns: minmax(182px, 0.92fr) minmax(176px, 0.83fr) minmax(205px, 1.04fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-map,
+.case-page-frame.has-soundsnomad-page .sn-field-action,
+.case-page-frame.has-soundsnomad-page .sn-field-evidence {
+  min-width: 0;
+  min-height: 0;
+  border: var(--sn-border);
+  background: var(--sn-panel);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-map {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 6px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-map-frame {
+  min-height: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-map-frame .sn-evidence-stamp {
+  right: 5px;
+  bottom: 5px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-map-label {
+  display: block;
+  padding: 2px 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-map-caption {
+  color: var(--sn-muted);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-source-marker {
+  position: absolute;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  padding: 0;
+  border: 2px solid var(--sn-ink);
+  border-radius: 50%;
+  background: var(--sn-lilac);
+  color: var(--sn-bg-deep);
+  box-shadow: 3px 3px 0 oklch(0.05 0.02 268 / 0.72);
+  cursor: pointer;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-source-marker:hover,
+.case-page-frame.has-soundsnomad-page .sn-source-marker:focus-visible {
+  outline: 2px solid var(--sn-yellow);
+  outline-offset: 3px;
+  transform: translate(-1px, -1px);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-source-marker.is-active {
+  background: var(--sn-yellow);
+  box-shadow: 3px 3px 0 oklch(0.58 0.12 92);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-source-marker.is-collected {
+  background: var(--sn-cyan);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-source-marker span {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  padding: 3px 4px;
+  transform: translateX(-50%);
+  background: oklch(0.08 0.035 268 / 0.9);
+  color: var(--sn-ink);
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-action,
+.case-page-frame.has-soundsnomad-page .sn-field-evidence {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-action h4,
+.case-page-frame.has-soundsnomad-page .sn-field-evidence p {
+  margin: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-action h4 {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-action > p {
+  margin: 0;
+  color: var(--sn-muted);
+  font-size: 10px;
+  line-height: 1.42;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flow-steps span {
+  padding: 5px 4px;
+  border: 1px solid oklch(0.55 0.08 268 / 0.7);
+  color: var(--sn-dim);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  text-align: center;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flow-steps span.is-current,
+.case-page-frame.has-soundsnomad-page .sn-flow-steps span.is-done {
+  border-color: var(--sn-cyan);
+  color: var(--sn-ink);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flow-steps span.is-done {
+  background: oklch(0.27 0.08 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flow-steps i {
+  color: var(--sn-yellow);
+  font-style: normal;
+  font-size: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-primary-action,
+.case-page-frame.has-soundsnomad-page .sn-device-tab {
+  min-height: 30px;
+  padding: 6px 8px;
+  border: 2px solid var(--sn-yellow);
+  border-radius: 0;
+  background: var(--sn-yellow);
+  color: var(--sn-bg-deep);
+  box-shadow: 3px 3px 0 oklch(0.50 0.12 92);
+  cursor: pointer;
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1.15;
+  text-align: center;
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end), filter 120ms linear;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-primary-action:hover,
+.case-page-frame.has-soundsnomad-page .sn-primary-action:focus-visible,
+.case-page-frame.has-soundsnomad-page .sn-device-tab:hover,
+.case-page-frame.has-soundsnomad-page .sn-device-tab:focus-visible {
+  outline: 2px solid var(--sn-ink);
+  outline-offset: 2px;
+  filter: brightness(1.08);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-primary-action:active,
+.case-page-frame.has-soundsnomad-page .sn-device-tab:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 oklch(0.50 0.12 92);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scope-note {
+  color: var(--sn-dim);
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scan-state {
+  display: grid;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid oklch(0.56 0.12 185 / 0.55);
+  background: oklch(0.08 0.035 268 / 0.65);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scan-state span {
+  position: relative;
+  padding-left: 13px;
+  color: var(--sn-dim);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scan-state span::before {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: oklch(0.50 0.05 268);
+  content: "";
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scan-state span.is-active {
+  color: var(--sn-ink);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-scan-state span.is-active::before {
+  background: var(--sn-cyan);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-evidence {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-flow {
+  display: grid;
+  gap: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-flow > div {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 7px;
+  align-items: center;
+  padding: 6px;
+  border-left: 3px solid oklch(0.46 0.08 268 / 0.68);
+  background: oklch(0.10 0.04 268 / 0.72);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-flow > div.is-active {
+  border-color: var(--sn-cyan);
+  background: oklch(0.25 0.075 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-flow b {
+  color: var(--sn-yellow);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-evidence-flow span {
+  color: var(--sn-muted);
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-field-proof {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 5px;
+  min-height: 0;
+  margin: 0;
+  padding: 5px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-proof-empty {
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  color: var(--sn-dim);
+  font-size: 9px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-garden-card {
+  display: grid;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid oklch(0.58 0.12 285 / 0.65);
+  background: oklch(0.22 0.07 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-garden-card strong {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-garden-slots {
+  display: grid;
+  gap: 3px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-garden-slots span {
+  overflow: hidden;
+  padding: 4px;
+  border: 1px solid oklch(0.50 0.08 268 / 0.6);
+  color: var(--sn-dim);
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-garden-slots span.is-lit {
+  border-color: var(--sn-cyan);
+  color: var(--sn-ink);
+  background: oklch(0.28 0.08 185 / 0.30);
+}
+
+/* Legacy field overrides: the formal page must use the fixed CRT content row. */
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sounds-field-page {
+  --sn-ink: oklch(0.96 0.035 268);
+  --sn-muted: oklch(0.76 0.045 268);
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-map,
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-action,
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-evidence {
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-base-page {
+  grid-template-columns: minmax(0, 1.2fr) minmax(210px, 0.8fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-device,
+.case-page-frame.has-soundsnomad-page .sn-system-summary {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: var(--sn-border);
+  background: var(--sn-panel);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-device {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 7px;
+  padding: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-tabs,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-tab-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-tab {
+  min-height: 24px;
+  padding: 4px 7px;
+  border-color: oklch(0.56 0.10 268 / 0.8);
+  background: var(--sn-bg-deep);
+  color: var(--sn-muted);
+  box-shadow: 2px 2px 0 oklch(0.04 0.02 268 / 0.72);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-tab-input:checked + .sn-device-tab {
+  border-color: var(--sn-cyan);
+  background: var(--sn-cyan);
+  color: var(--sn-bg-deep);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 oklch(0.22 0.08 185);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-tab-input:focus-visible + .sn-device-tab {
+  outline: 2px solid var(--sn-yellow);
+  outline-offset: 2px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-view {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  align-items: stretch;
+  min-height: 0;
+  padding: 10px 8px 8px;
+  border: 2px solid oklch(0.56 0.10 268 / 0.72);
+  background: var(--sn-bg-deep);
+  box-shadow:
+    inset 0 0 0 2px oklch(0.16 0.05 268),
+    4px 4px 0 oklch(0.04 0.02 268 / 0.75);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-view::before,
+.case-page-frame.has-soundsnomad-page .sn-device-view::after {
+  position: absolute;
+  top: 4px;
+  width: 4px;
+  height: 4px;
+  background: var(--sn-lilac);
+  box-shadow: 0 0 0 1px oklch(0.04 0.02 268);
+  content: "";
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-view::before {
+  left: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-view::after {
+  right: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-pane {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: stretch;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 5px 6px;
+  border-color: oklch(0.48 0.08 268 / 0.82);
+  background: oklch(0.10 0.035 268);
+  box-shadow: 2px 2px 0 oklch(0.04 0.02 268 / 0.8);
+  cursor: pointer;
+  transition: transform 120ms steps(2, end), border-color 120ms linear, box-shadow 120ms steps(2, end);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-pane::before {
+  inset: 3px auto auto 50%;
+  width: 16px;
+  height: 2px;
+  border: 0;
+  background: oklch(0.63 0.11 275 / 0.72);
+  transform: translateX(-50%);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-pane::after {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 3px;
+  height: 3px;
+  background: var(--sn-dim);
+  content: "";
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-pane:hover {
+  border-color: var(--sn-lilac);
+  transform: translateY(-2px);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-chrome {
+  position: relative;
+  display: block;
+  align-self: center;
+  justify-self: center;
+  width: min(100%, 112px);
+  aspect-ratio: 1206 / 2622;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid oklch(0.76 0.10 275 / 0.72);
+  background: #000;
+  box-shadow: inset 0 0 0 1px oklch(0.04 0.02 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-pane .sn-device-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-caption {
+  display: grid;
+  gap: 2px;
+  text-align: center;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-caption b {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-caption small {
+  overflow: hidden;
+  color: var(--sn-dim);
+  font-size: 7px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-home:checked) ~ .sn-device-view .sn-device-pane[data-screen="home"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-sounds:checked) ~ .sn-device-view .sn-device-pane[data-screen="sounds"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-player:checked) ~ .sn-device-view .sn-device-pane[data-screen="player"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-garden:checked) ~ .sn-device-view .sn-device-pane[data-screen="garden"] {
+  z-index: 1;
+  border-color: var(--sn-cyan);
+  background: oklch(0.18 0.055 268);
+  box-shadow: 4px 4px 0 oklch(0.22 0.08 185);
+  transform: translate(-1px, -2px);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-product-device:has(#sn-product-screen-home:focus-visible) .sn-device-pane[data-screen="home"],
+.case-page-frame.has-soundsnomad-page .sn-product-device:has(#sn-product-screen-sounds:focus-visible) .sn-device-pane[data-screen="sounds"],
+.case-page-frame.has-soundsnomad-page .sn-product-device:has(#sn-product-screen-player:focus-visible) .sn-device-pane[data-screen="player"],
+.case-page-frame.has-soundsnomad-page .sn-product-device:has(#sn-product-screen-garden:focus-visible) .sn-device-pane[data-screen="garden"] {
+  outline: 2px solid var(--sn-yellow);
+  outline-offset: 2px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-readouts {
+  min-height: 19px;
+  padding: 4px 128px 0 2px;
+  border-top: 1px solid oklch(0.56 0.10 268 / 0.42);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-readout {
+  display: none;
+  margin: 0;
+  color: var(--sn-muted);
+  font-size: 7px;
+  line-height: 1.25;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-home:checked) ~ .sn-device-readouts .sn-device-readout[data-screen="home"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-sounds:checked) ~ .sn-device-readouts .sn-device-readout[data-screen="sounds"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-player:checked) ~ .sn-device-readouts .sn-device-readout[data-screen="player"],
+.case-page-frame.has-soundsnomad-page .sn-device-tabs:has(#sn-product-screen-garden:checked) ~ .sn-device-readouts .sn-device-readout[data-screen="garden"] {
+  display: block;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-device-stamp {
+  right: 10px;
+  bottom: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-summary {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-title {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 16px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-row {
+  display: grid;
+  grid-template-columns: 25px 70px 1fr;
+  gap: 6px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-top: 1px solid oklch(0.56 0.10 268 / 0.42);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-row.is-core {
+  border-color: var(--sn-cyan);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-row b {
+  color: var(--sn-yellow);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-row span {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-row small {
+  color: var(--sn-muted);
+  font-size: 8px;
+  line-height: 1.25;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-callout {
+  display: grid;
+  gap: 5px;
+  margin-top: 4px;
+  padding: 8px;
+  border: 2px solid var(--sn-lilac);
+  background: oklch(0.26 0.08 285 / 0.45);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-callout b {
+  color: var(--sn-lilac);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-system-callout span {
+  color: var(--sn-ink);
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-loop-page {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track article {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px;
+  border: var(--sn-border);
+  background: var(--sn-panel);
+  box-shadow: 3px 3px 0 oklch(0.04 0.02 268 / 0.75);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track article.is-collab {
+  border-color: var(--sn-cyan);
+  background: oklch(0.24 0.075 268);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track b {
+  color: var(--sn-yellow);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track span {
+  color: var(--sn-cyan);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track strong {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+  line-height: 1.15;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-track small {
+  color: var(--sn-muted);
+  font-size: 8px;
+  line-height: 1.25;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-workflow-arrow {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  z-index: 2;
+  color: var(--sn-yellow);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-growth-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(230px, 0.84fr);
+  gap: 8px;
+  min-height: 0;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-proof,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-proof {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 9px;
+  border: var(--sn-border);
+  background: var(--sn-panel);
+  box-shadow: var(--sn-shadow);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-proof > strong {
+  color: var(--sn-ink);
+  font-family: var(--pixel-font);
+  font-size: 13px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-chain span {
+  padding: 5px 6px;
+  border: 1px solid oklch(0.57 0.11 185 / 0.72);
+  color: var(--sn-ink);
+  font-size: 8px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-chain i {
+  color: var(--sn-yellow);
+  font-style: normal;
+  font-size: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-aso-proof p,
+.case-page-frame.has-soundsnomad-page .sn-flashcam-note {
+  margin: 0;
+  color: var(--sn-muted);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-pipeline-note {
+  padding-top: 6px;
+  border-top: 1px solid oklch(0.56 0.10 268 / 0.42);
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-proof {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-proof .sn-proof-heading {
+  display: grid;
+  gap: 3px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-proof .sn-proof-heading strong {
+  font-size: 11px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-view {
+  display: grid;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-pane {
+  display: none;
+  min-height: 0;
+  margin: 0;
+  padding: 4px;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-tabs:has(#sn-flashcam-screen-flashcam1:checked) ~ .sn-flashcam-view .sn-flashcam-pane[data-screen="flashcam1"],
+.case-page-frame.has-soundsnomad-page .sn-flashcam-tabs:has(#sn-flashcam-screen-flashcam2:checked) ~ .sn-flashcam-view .sn-flashcam-pane[data-screen="flashcam2"] {
+  display: block;
+}
+
+.case-page-frame.has-soundsnomad-page .sn-flashcam-image {
+  object-fit: contain;
+}
+
+@media (max-width: 860px) {
+  .case-page-frame.has-soundsnomad-page .sounds-field-page {
+    grid-template-columns: minmax(170px, 0.85fr) minmax(165px, 0.9fr);
+    grid-template-areas:
+      "map action"
+      "evidence evidence";
+    overflow: visible;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-field-map { grid-area: map; }
+  .case-page-frame.has-soundsnomad-page .sn-field-action { grid-area: action; }
+  .case-page-frame.has-soundsnomad-page .sn-field-evidence { grid-area: evidence; }
+  .case-page-frame.has-soundsnomad-page .sn-field-evidence { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  .case-page-frame.has-soundsnomad-page .sn-evidence-heading { grid-column: 1 / -1; }
+  .case-page-frame.has-soundsnomad-page .sn-evidence-flow { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  .case-page-frame.has-soundsnomad-page .sn-field-proof { grid-column: 1 / -1; min-height: 150px; }
+  .case-page-frame.has-soundsnomad-page .sn-garden-card { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-soundsnomad-page,
+  .case-page-frame.has-soundsnomad-page > .case-page-copy {
+    background: var(--sn-bg);
+  }
+
+  .case-page-frame.has-soundsnomad-page {
+    height: auto;
+    min-height: 0;
+    grid-template-rows: auto;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-soundsnomad-page > .case-page-copy {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    align-items: start;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sounds-page {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sounds-intro-page,
+  .case-page-frame.has-soundsnomad-page .sounds-base-page,
+  .case-page-frame.has-soundsnomad-page .sounds-field-page,
+  .case-page-frame.has-soundsnomad-page .sn-growth-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-intro-copy {
+    align-content: start;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-proof-body {
+    grid-template-columns: 118px minmax(0, 1fr);
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-intro-proof {
+    overflow: hidden;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-product-proof-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: stretch;
+    gap: 3px;
+    overflow: hidden;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-product-proof-list > div {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-product-proof-list b {
+    grid-row: auto;
+    font-size: 7px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-product-proof-list strong,
+  .case-page-frame.has-soundsnomad-page .sn-product-proof-list small {
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-field-map,
+  .case-page-frame.has-soundsnomad-page .sn-field-action,
+  .case-page-frame.has-soundsnomad-page .sn-field-evidence {
+    grid-area: auto;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-field-map {
+    height: auto !important;
+    min-height: 280px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-field-evidence {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-evidence-heading,
+  .case-page-frame.has-soundsnomad-page .sn-evidence-flow,
+  .case-page-frame.has-soundsnomad-page .sn-field-proof,
+  .case-page-frame.has-soundsnomad-page .sn-garden-card {
+    grid-column: auto;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-evidence-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-view {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-pane {
+    min-height: 0;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-chrome {
+    width: min(100%, 118px);
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-readouts {
+    padding-right: 2px;
+    padding-bottom: 22px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-stamp {
+    right: 10px;
+    bottom: 8px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-workflow-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-workflow-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-page-frame.has-soundsnomad-page .case-page-copy h3 {
+    font-size: 19px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .case-page-copy p {
+    font-size: 10px;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-proof-body {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-workflow-track {
+    grid-template-columns: 1fr;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-system-row {
+    grid-template-columns: 24px 62px 1fr;
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .case-page-frame.has-soundsnomad-page .sn-device-tab {
+    min-height: 26px;
+    padding-inline: 3px;
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-page-frame.has-soundsnomad-page .sn-primary-action,
+  .case-page-frame.has-soundsnomad-page .sn-device-tab,
+  .case-page-frame.has-soundsnomad-page .sn-device-pane,
+  .case-page-frame.has-soundsnomad-page .sn-source-marker {
+    transition: none;
+  }
+}
+
+/*
+ * Arcade screen contract
+ *
+ * SoundsNomad owns the surface inside the cabinet. The shared shell remains
+ * untouched, but the screen, bezel and case panel switch together so the
+ * green cabinet never leaks into this Case. The page copy is already repeated
+ * by each evidence surface, so it must not consume a second fixed-height row.
+ */
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-bezel {
+  background: linear-gradient(180deg, oklch(0.10 0.035 268), oklch(0.055 0.02 268));
+  border-color: oklch(0.60 0.12 275 / 0.58);
+  box-shadow:
+    inset 0 0 0 5px oklch(0.035 0.015 268),
+    inset 0 20px 36px oklch(0.04 0.03 285 / 0.72),
+    4px 4px 0 oklch(0.02 0.01 268 / 0.62);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .crt-screen {
+  background:
+    linear-gradient(130deg, oklch(1 0 0 / 0.04), transparent 28%),
+    repeating-linear-gradient(0deg, oklch(0.78 0.16 285 / 0.055) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse at 50% 20%, oklch(0.18 0.055 285), oklch(0.09 0.035 268) 66%, oklch(0.055 0.02 268));
+  border-color: oklch(0.72 0.16 285 / 0.72);
+  box-shadow:
+    inset 0 0 40px oklch(0.18 0.08 285 / 0.28),
+    0 0 36px oklch(0.64 0.20 285 / 0.26);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 6px;
+  padding: 10px;
+  overflow: hidden;
+  color: oklch(0.96 0.035 268);
+  background: oklch(0.075 0.028 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case .case-page-status {
+  margin: 0;
+  color: oklch(0.78 0.16 285);
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.case-page-frame.has-soundsnomad-page {
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--sn-bg);
+}
+
+.case-page-frame.has-soundsnomad-page > .case-page-copy {
+  display: none;
+}
+
+.case-page-frame.has-soundsnomad-page .sounds-page {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 820px) {
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case {
+    padding: 8px;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case .case-page-status {
+    font-size: 9px;
+  }
+}
+
+/* Keep the remaining Arcade chrome inside the SoundsNomad palette as well. */
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .crt-screen,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .hero-meta,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .hero-meta p,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .hero-meta small {
+  color: oklch(0.78 0.12 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-marquee > span,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-marquee > strong {
+  color: oklch(0.84 0.14 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .case-page-status span {
+  background: oklch(0.23 0.06 285);
+  border-color: oklch(0.62 0.16 285 / 0.7);
+  box-shadow: 2px 2px 0 oklch(0.02 0.01 268 / 0.55);
+  color: oklch(0.88 0.14 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .control-buttons,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .transport-controls {
+  background-image: linear-gradient(180deg, oklch(0.12 0.04 285), oklch(0.07 0.025 268));
+  border-color: oklch(0.5 0.12 285 / 0.65);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .case-puck {
+  background-image: linear-gradient(180deg, oklch(0.16 0.05 285), oklch(0.09 0.03 268));
+  border-color: oklch(0.5 0.12 285 / 0.65);
+  box-shadow: 2px 2px 0 oklch(0.04 0.02 268 / 0.62);
+  color: oklch(0.86 0.12 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .case-puck.is-active {
+  background-image: linear-gradient(180deg, oklch(0.28 0.12 285), oklch(0.15 0.06 268));
+  box-shadow: 2px 2px 0 oklch(0.76 0.16 285 / 0.6);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .case-puck[data-case-target="indie"] > span {
+  background: oklch(0.76 0.16 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .transport-controls .direction-controls {
+  background: oklch(0.07 0.025 268 / 0.9);
+  border-color: oklch(0.5 0.12 285 / 0.5);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .start-button {
+  background: oklch(0.76 0.16 285);
+  border-color: oklch(0.88 0.14 285);
+  color: oklch(0.08 0.025 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .control-panel {
+  border-color: oklch(0.5 0.12 285 / 0.6);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .sn-garden-card {
+  background: linear-gradient(145deg, oklch(0.18 0.06 285), oklch(0.08 0.025 268));
+  border-color: oklch(0.52 0.14 285 / 0.7);
+  box-shadow: inset 0 0 0 1px oklch(0.75 0.16 285 / 0.12);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .sn-garden-card .sn-garden-slots span {
+  background: oklch(0.16 0.05 285 / 0.62);
+  border-color: oklch(0.46 0.12 285 / 0.5);
+  color: oklch(0.82 0.08 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .sn-garden-card .sn-garden-slots .is-lit {
+  background: oklch(0.3 0.12 285 / 0.7);
+  border-color: oklch(0.72 0.16 285 / 0.72);
+  color: oklch(0.94 0.08 268);
+}
+
+/*
+ * Case-level theme bridge
+ *
+ * The shared Arcade shell owns the default green world. Once a SoundsNomad
+ * page is mounted, every visible shell surface must follow the Case palette
+ * so the project reads as one purple-black environment instead of a green
+ * frame around a purple screen.
+ */
+html:has(body.arcade-page[data-screen-mode="case"] .case-page-frame.has-soundsnomad-page),
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) {
+  background:
+    repeating-linear-gradient(90deg, oklch(0.35 0.07 285 / 0.055) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(0deg, oklch(0.35 0.07 285 / 0.045) 0 1px, transparent 1px 42px),
+    linear-gradient(180deg, oklch(0.055 0.02 268), oklch(0.085 0.035 285) 52%, oklch(0.045 0.018 268));
+  color: oklch(0.96 0.035 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .site-header {
+  background: linear-gradient(180deg, oklch(0.075 0.028 268 / 0.96), oklch(0.055 0.02 268 / 0.9));
+  border-color: oklch(0.56 0.14 285 / 0.5);
+  color: oklch(0.92 0.05 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-marquee,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-body,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .control-panel {
+  background-image:
+    linear-gradient(135deg, oklch(1 0 0 / 0.04), transparent 32%),
+    repeating-linear-gradient(90deg, oklch(0.72 0.16 285 / 0.025) 0 1px, transparent 1px 7px),
+    linear-gradient(180deg, oklch(0.13 0.04 285), oklch(0.075 0.025 268) 58%, oklch(0.045 0.018 268));
+  color: oklch(0.92 0.05 268);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-body {
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    inset 0 -24px 44px oklch(0.03 0.02 268 / 0.54),
+    0 28px 80px oklch(0.04 0.03 285 / 0.4);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .speaker-row {
+  color: oklch(0.74 0.09 285);
+}
+
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .header-mode,
+body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .hero-meta > span {
+  color: oklch(0.84 0.14 285) !important;
+}
+
+/*
+ * Narrow-screen contract
+ *
+ * The desktop cabinet is intentionally a fixed arcade screen. On a narrow
+ * viewport, the case must be allowed to grow with its evidence instead of
+ * compressing the Field flow into a clipped 452px viewport. This remains
+ * scoped to SoundsNomad; the shared cabinet keeps its original contract for
+ * every other Case.
+ */
+@media (max-width: 820px) {
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .arcade-cabinet,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-marquee,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-body,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-bezel,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .crt-screen,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .control-panel {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-marquee {
+    overflow: hidden;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .arcade-cabinet,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .cabinet-body,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-bezel,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .crt-screen,
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case {
+    height: auto;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-bezel {
+    min-height: 477px;
+    overflow: visible;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .crt-screen {
+    min-height: 452px;
+    overflow: visible;
+  }
+
+  body.arcade-page[data-screen-mode="case"]:has(.case-page-frame.has-soundsnomad-page) .screen-panel-case {
+    min-height: 447px;
+    grid-template-rows: auto auto;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-soundsnomad-page,
+  .case-page-frame.has-soundsnomad-page .sounds-page {
+    height: auto;
+    min-height: 0;
+    overflow: visible !important;
+  }
+}
+
+/*
+ * Field proof priority
+ *
+ * The real Discovery Card is the strongest proof on this page. The action
+ * panel already carries FIND → SCAN → CARD → KEEP, so the duplicate evidence
+ * rail is removed from the render and this column can give the screenshot the
+ * space it needs to be read at a glance.
+ */
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sounds-field-page {
+  grid-template-columns: minmax(168px, 0.78fr) minmax(176px, 0.82fr) minmax(270px, 1.42fr);
+  gap: 10px;
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-evidence {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-proof {
+  min-height: 0;
+  padding: 7px;
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-proof .sn-proof-image {
+  object-fit: contain;
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-proof .sn-discovery-proof {
+  object-fit: contain;
+  object-position: center;
+  background: oklch(0.08 0.02 268);
+}
+
+.case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-garden-card {
+  gap: 4px;
+  padding: 6px;
+}
+
+@media (max-width: 860px) {
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-evidence {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-proof {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-evidence {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sn-field-proof {
+    min-height: 360px;
+  }
+}
+
+/* Keep the proof-priority grid responsive after the desktop override above. */
+@media (max-width: 860px) {
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sounds-field-page {
+    grid-template-columns: minmax(170px, 0.85fr) minmax(165px, 0.9fr);
+    grid-template-areas:
+      "map action"
+      "evidence evidence";
+  }
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sounds-field-page {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+}

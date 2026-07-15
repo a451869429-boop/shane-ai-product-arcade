@@ -1,0 +1,1789 @@
+/* Dokie ownership surface. New Dokie-only CSS belongs here. */
+
+/* Dokie keeps its bitmap type local so the case does not depend on a remote
+   font request. Bitmap type is reserved for short labels and controls; body
+   copy continues to use the portfolio's readable sans-serif stack. */
+@font-face {
+  font-family: "Dokie Press Start";
+  src: url("../../assets/dokie/fonts/PressStart2P-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dokie Silkscreen";
+  src: url("../../assets/dokie/fonts/Silkscreen-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* Pixel UI visual tokens only. These tokens intentionally do not define any
+   grid, flex, width, height, gap, or page-order rules. */
+.case-page-frame.has-dokie-page {
+  --dokie-pixel-ink: #082a4d;
+  --dokie-pixel-ink-soft: #34536d;
+  --dokie-pixel-blue: #0875c1;
+  --dokie-pixel-cyan: #36c7e9;
+  --dokie-pixel-lime: #b6f000;
+  --dokie-pixel-warm: #ffcb35;
+  --dokie-pixel-paper: #fffefa;
+  --dokie-pixel-surface: #e7f5fa;
+  --dokie-pixel-surface-blue: #cfeefa;
+  --dokie-pixel-shadow: #0b3b5d;
+  --dokie-pixel-line: #0b3157;
+  --dokie-pixel-font-display: "Dokie Press Start", "Dokie Silkscreen", monospace;
+  --dokie-pixel-font-control: "Dokie Silkscreen", "Dokie Press Start", monospace;
+}
+
+/* Format Showcase: evidence first. Each artifact gets the canvas geometry of its format. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] {
+  height: 100% !important;
+  min-height: 0 !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+/* Format Showcase is a content viewer; remove the shared case-copy band above it. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] > .case-page-copy {
+  display: none !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-intro"] > .case-page-copy h3 {
+  display: none !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-intro"] {
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-intro"] > .case-page-copy {
+  display: none !important;
+}
+
+.screen-panel-case:has(.case-page-frame.has-dokie-page[data-page-type="dokie-formats"]) .case-page-status {
+  display: none !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.18fr) minmax(0, 1fr);
+  grid-template-areas: "tabs viewer";
+  gap: 8px;
+  align-items: start;
+  align-content: start;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100% !important;
+  overflow: visible;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-tabs {
+  grid-area: tabs;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  min-width: 0;
+  margin: 0;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-tabs button {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell {
+  grid-area: viewer;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 6px;
+  align-content: start;
+  min-width: 0;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  width: 100%;
+  height: 100% !important;
+  align-self: stretch;
+  overflow: visible;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-header-title {
+  min-width: 0;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-proof-label {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--dokie-blue);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-ppt {
+  width: 100%;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  max-height: 100% !important;
+  overflow: hidden;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-social {
+  width: min(100%, 440px);
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  max-height: 100% !important;
+  justify-self: center;
+  overflow: hidden;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-long-scroll,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-draft {
+  width: 100%;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100% !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  align-content: start;
+  justify-items: stretch;
+  scrollbar-color: var(--dokie-blue) transparent;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-ppt .dokie-artifact-image,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-social .dokie-artifact-image {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-long-scroll .dokie-artifact-image,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-draft .dokie-artifact-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tabs"
+      "viewer";
+    gap: 8px;
+    height: auto;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] {
+    height: auto !important;
+    grid-template-rows: auto !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell {
+    width: 100%;
+    height: auto;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-proof-label {
+    display: none;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-social {
+    width: min(100%, 320px);
+    height: auto !important;
+    min-height: 0;
+    max-height: none !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-ppt {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-long-scroll,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-draft {
+    height: 360px !important;
+    max-height: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-tabs button {
+    min-height: 48px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-long-scroll,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-viewer.is-draft {
+    height: 300px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-tabs button,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-controls button,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-thumbs button {
+    transition: none;
+  }
+}
+
+/* Long Scroll / Draft: standalone vertical reading scenes, not landscape canvases. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"]:has(.dokie-artifact-shell.is-vertical-reader) {
+  height: auto !important;
+  grid-template-rows: auto !important;
+}
+
+.screen-panel-case:has(.dokie-artifact-shell.is-vertical-reader) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="long-scroll"],
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="draft"] {
+  grid-template-columns: minmax(112px, 160px) minmax(0, 1fr);
+  grid-template-areas:
+    "tabs tabs"
+    "overview viewer";
+  grid-template-rows: auto 380px;
+  align-content: start;
+  height: auto !important;
+  gap: 8px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="long-scroll"] .dokie-format-tabs,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="draft"] .dokie-format-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader {
+  grid-area: viewer;
+  height: 380px !important;
+  max-height: none !important;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-content: stretch;
+  padding: 8px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader .dokie-artifact-viewer.is-long-scroll,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader .dokie-artifact-viewer.is-draft {
+  width: min(100%, 560px);
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--dokie-blue) transparent;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader .dokie-artifact-viewer.is-draft {
+  width: min(100%, 480px);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader .dokie-artifact-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader .dokie-artifact-scroll-note {
+  margin: 0;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview {
+  grid-area: overview;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 4px;
+  width: 100%;
+  height: 380px;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px;
+  border: 1px solid color-mix(in oklab, var(--dokie-blue) 28%, var(--dokie-ink));
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--dokie-paper) 92%, var(--dokie-cyan));
+  box-shadow: 3px 3px 0 color-mix(in oklab, var(--dokie-cyan) 72%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
+  color: var(--dokie-ink);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-status {
+  color: var(--dokie-blue);
+  font-size: 7px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-canvas {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--dokie-blue) 38%, white);
+  border-radius: 7px;
+  background: white;
+  cursor: crosshair;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-image {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-viewport {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  min-height: 16px;
+  box-sizing: border-box;
+  border: 2px solid var(--dokie-blue);
+  background: color-mix(in oklab, var(--dokie-blue) 18%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, white 72%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="long-scroll"] .dokie-format-tabs,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="draft"] .dokie-format-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="long-scroll"],
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="draft"] {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tabs"
+      "overview"
+      "viewer";
+    grid-template-rows: auto 180px 420px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview {
+    width: 100%;
+    height: 180px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader {
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-vertical-reader {
+    height: 360px !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="long-scroll"],
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="draft"] {
+    grid-template-rows: auto 160px 360px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview {
+    height: 160px;
+  }
+}
+
+/* Social Carousel: keep the same pure showcase structure as PPT. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="social"] {
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  grid-template-areas:
+    "tabs"
+    "viewer" !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  align-content: stretch;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="social"] .dokie-format-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-self: start;
+}
+
+.screen-panel-case:has(.dokie-format-showcase-page[data-dokie-format-view="social"]) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  width: 100%;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  padding: 8px 8px 10px;
+  gap: 7px;
+  border-radius: 12px;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--dokie-cyan) 28%, white), transparent 28%),
+    var(--dokie-paper);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-header {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 18px;
+  padding: 0 2px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-header-title {
+  color: var(--dokie-ink);
+  font-size: 9px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-status {
+  color: var(--dokie-blue);
+  font-size: 8px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-viewer.is-social {
+  width: 100%;
+  height: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  background: white;
+  box-shadow: none;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-viewer.is-social .dokie-artifact-image {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+.dokie-social-canvas {
+  width: min(100%, 440px);
+  height: min(100%, 550px);
+  aspect-ratio: 4 / 5;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-controls {
+  grid-area: controls;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  justify-content: stretch;
+  gap: 5px;
+  min-height: 26px;
+  color: var(--dokie-ink);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-page-button {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--dokie-ink);
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-page-button:disabled {
+  opacity: 0.35;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-page-button:first-child {
+  justify-self: start;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-page-button:last-child {
+  justify-self: end;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-page-count {
+  min-width: 44px;
+  color: var(--dokie-ink);
+  font-family: inherit;
+  font-size: 11px;
+  text-align: center;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail {
+  grid-area: thumbs;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  min-height: 30px;
+  padding: 1px 0 3px;
+  overflow-x: auto;
+  scrollbar-color: var(--dokie-blue) transparent;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button {
+  position: relative;
+  flex: 0 0 42px;
+  height: 22px;
+  min-height: 0;
+  padding: 2px;
+  border: 1px solid color-mix(in oklab, var(--dokie-ink) 15%, white);
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 2px 5px color-mix(in oklab, var(--dokie-ink) 10%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button.is-active {
+  border: 2px solid var(--dokie-blue);
+  background: white;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--dokie-blue) 16%, transparent);
+  transform: translateY(-2px);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="social"] {
+    height: auto !important;
+    min-height: 0;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social {
+    height: auto !important;
+    max-height: none !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    padding: 6px;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-social-workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "stage"
+      "controls"
+      "thumbs";
+    height: auto;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-social-stage {
+    padding: 7px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-social-canvas {
+    width: min(100%, 320px);
+    height: auto;
+    max-height: none;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-artifact-viewer.is-social {
+    width: 100%;
+    height: 100% !important;
+    max-height: none !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail {
+    justify-content: flex-start;
+  }
+}
+
+/* PPT: present the real pages as a centered 16:9 canvas with direct page switching. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="ppt"] {
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  grid-template-areas:
+    "tabs"
+    "viewer" !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  align-content: stretch;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="ppt"] .dokie-format-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-self: start;
+}
+
+.screen-panel-case:has(.dokie-format-showcase-page[data-dokie-format-view="ppt"]) {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  padding: 8px 8px 10px;
+  gap: 7px;
+  border-radius: 12px;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--dokie-cyan) 28%, white), transparent 28%),
+    var(--dokie-paper);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-header {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 18px;
+  padding: 0 2px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-header-title {
+  color: var(--dokie-ink);
+  font-size: 9px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-status {
+  color: var(--dokie-blue);
+  font-size: 8px;
+}
+
+.dokie-ppt-workspace {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "stage stage"
+    "controls thumbs";
+  gap: 7px;
+  min-width: 0;
+}
+
+.dokie-ppt-stage {
+  grid-area: stage;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 10px;
+  border: 1px solid color-mix(in oklab, var(--dokie-blue) 18%, white);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 10% 7%, color-mix(in oklab, var(--dokie-cyan) 52%, white), transparent 26%),
+    radial-gradient(circle at 92% 93%, color-mix(in oklab, var(--dokie-blue) 20%, white), transparent 28%),
+    #f7f9fc;
+}
+
+.dokie-ppt-canvas {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--dokie-ink) 15%, white);
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 7px 16px color-mix(in oklab, var(--dokie-ink) 13%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-viewer.is-ppt {
+  width: 100%;
+  height: 100% !important;
+  min-height: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: white;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-viewer.is-ppt .dokie-artifact-image {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-controls {
+  grid-area: controls;
+  justify-content: center;
+  gap: 12px;
+  min-height: 28px;
+  color: var(--dokie-ink);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-page-button {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--dokie-ink);
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-page-button:disabled {
+  opacity: 0.35;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-page-count {
+  min-width: 44px;
+  color: var(--dokie-ink);
+  font-family: inherit;
+  font-size: 11px;
+  text-align: center;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail {
+  display: flex;
+  gap: 7px;
+  min-width: 0;
+  padding: 3px 2px 6px;
+  overflow-x: auto;
+  scrollbar-color: var(--dokie-blue) transparent;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button {
+  position: relative;
+  flex: 0 0 clamp(66px, 10vw, 106px);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 0;
+  padding: 3px;
+  border: 1px solid color-mix(in oklab, var(--dokie-ink) 15%, white);
+  border-radius: 9px;
+  background: white;
+  box-shadow: 0 2px 5px color-mix(in oklab, var(--dokie-ink) 10%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button.is-active {
+  border: 2px solid var(--dokie-blue);
+  background: white;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--dokie-blue) 16%, transparent);
+  transform: translateY(-2px);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dokie-ppt-thumb-label {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: color-mix(in oklab, var(--dokie-ink) 78%, transparent);
+  color: white;
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="ppt"] {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "tabs"
+      "viewer" !important;
+  }
+
+  .dokie-ppt-stage {
+    padding-inline: 7px;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button {
+    flex-basis: 64px;
+  }
+}
+
+/* The arcade screen is shorter than a full editor viewport. Keep the PPT
+   artifact complete while prioritizing the real page and page switching. */
+@media (min-width: 701px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-format-showcase-page[data-dokie-format-view="ppt"] {
+    grid-template-rows: auto minmax(0, 1fr) !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt {
+    grid-template-rows: 14px minmax(0, 1fr) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    padding: 2px 6px;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-header {
+    min-height: 14px;
+    height: 14px;
+    overflow: hidden;
+  }
+
+  .dokie-ppt-workspace {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) 26px;
+    grid-template-areas:
+      "stage stage"
+      "controls thumbs";
+    gap: 2px;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .dokie-ppt-stage {
+    padding: 8px 6px 4px;
+    overflow: hidden;
+  }
+
+  .dokie-ppt-canvas {
+    width: auto;
+    height: min(100%, 420px);
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-artifact-controls {
+    grid-area: controls;
+    min-height: 26px;
+    gap: 5px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail {
+    grid-area: thumbs;
+    height: 26px;
+    align-items: center;
+    gap: 4px;
+    padding: 1px 0;
+    overflow: hidden;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button {
+    flex-basis: 42px;
+    height: 22px;
+    padding: 2px;
+    border-radius: 5px;
+  }
+
+  .dokie-ppt-thumb-label {
+    right: 2px;
+    bottom: 2px;
+    font-size: 6px;
+  }
+
+  /* Social assets stay portrait inside the shared PPT workspace. */
+  .dokie-social-canvas {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Template System: keep the stage rail readable and prevent sibling panels
+   from stretching a shorter content block into empty space. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-process {
+  min-height: 70px;
+  height: 70px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-map {
+  align-items: start;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-map-panel {
+  align-self: start;
+  height: fit-content;
+}
+
+/* Final Template System page: a visual gallery of the real outputs with a
+   single product message and a direct external entry point. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] {
+  height: 100% !important;
+  min-height: 0 !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  overflow: visible;
+}
+
+.screen-panel-case:has(.dokie-template-final-page) {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] > .case-page-copy {
+  display: none !important;
+}
+
+.screen-panel-case:has(.dokie-template-final-page) .case-page-status {
+  display: none !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-page {
+  display: block;
+  width: 100%;
+  height: 100% !important;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid var(--dokie-ink);
+  background:
+    radial-gradient(circle at 8% 16%, color-mix(in oklab, var(--dokie-cyan) 44%, white), transparent 30%),
+    radial-gradient(circle at 92% 88%, color-mix(in oklab, var(--dokie-blue) 18%, white), transparent 34%),
+    var(--dokie-paper);
+  box-shadow: 5px 5px 0 var(--dokie-cyan);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-header {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--dokie-ink);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-count {
+  color: var(--dokie-blue);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-gallery {
+  position: absolute;
+  inset: 34px 10px 10px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 5px;
+  align-content: center;
+  min-width: 0;
+  min-height: 0;
+  opacity: 0.84;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--dokie-ink) 48%, white);
+  background: white;
+  box-shadow: 2px 2px 0 color-mix(in oklab, var(--dokie-cyan) 72%, transparent);
+  transform: rotate(-0.8deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card:nth-child(3n) {
+  transform: rotate(0.8deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card:nth-child(4n) {
+  transform: rotate(-1.4deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card.is-ppt .dokie-template-gallery-image {
+  object-fit: cover;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card.is-long-scroll .dokie-template-gallery-image,
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card.is-draft .dokie-template-gallery-image,
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card.is-social .dokie-template-gallery-image {
+  object-position: top center;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-gallery-card figcaption {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  max-width: calc(100% - 6px);
+  padding: 2px 3px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--dokie-ink) 78%, transparent);
+  color: white;
+  font-family: var(--pixel-font);
+  font-size: 6px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  width: min(340px, 42%);
+  min-width: 250px;
+  padding: 14px 16px 15px;
+  border: 2px solid var(--dokie-ink);
+  background: color-mix(in oklab, var(--dokie-paper) 94%, white);
+  box-shadow: 5px 5px 0 var(--dokie-blue);
+  color: var(--dokie-ink);
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(-1deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-logo {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 4px;
+  object-fit: contain;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro h4,
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro p {
+  margin: 0;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro h4 {
+  max-width: 290px;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-copy {
+  max-width: 300px;
+  margin-top: 6px !important;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-formats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 9px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-formats span {
+  padding: 3px 5px;
+  border: 1px solid var(--dokie-blue);
+  color: var(--dokie-blue);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  margin-top: 11px;
+  padding: 6px 12px;
+  border: 2px solid var(--dokie-ink);
+  background: var(--dokie-blue);
+  box-shadow: 3px 3px 0 var(--dokie-cyan);
+  color: white;
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  text-decoration: none;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link:hover,
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link:focus-visible {
+  outline: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--dokie-cyan);
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case:has(.dokie-template-final-page) {
+    overflow-y: auto !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] {
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-rows: auto !important;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-page,
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-stage {
+    height: 480px !important;
+    min-height: 480px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    inset: 34px 7px 7px;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro {
+    width: min(330px, 72%);
+    min-width: 0;
+  }
+}
+
+/* Template case wall: the source assets are arranged as a poster-like arc,
+   with the product story held in the quiet left field. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-stage {
+  background:
+    radial-gradient(circle at 76% 48%, color-mix(in oklab, var(--dokie-cyan) 24%, white), transparent 42%),
+    #eef0ed;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-gallery {
+  z-index: 1;
+  inset: 0;
+  display: block;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-gallery::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -68%;
+  left: -44%;
+  width: 86%;
+  height: 235%;
+  border-right: 1px solid color-mix(in oklab, var(--dokie-ink) 18%, white);
+  border-radius: 50%;
+  background: color-mix(in oklab, white 78%, var(--dokie-paper));
+  box-shadow: 10px 0 28px color-mix(in oklab, var(--dokie-ink) 9%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-case-rail {
+  position: absolute;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  gap: 6px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-ppt-cases {
+  z-index: 1;
+  top: 9%;
+  right: 3%;
+  left: 34%;
+  height: 48%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  transform: rotate(-5deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-social-cases {
+  z-index: 2;
+  top: 13%;
+  right: 1%;
+  bottom: 5%;
+  left: 42%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  transform: rotate(7deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-case-rail .dokie-template-gallery-card {
+  width: auto;
+  height: auto;
+  min-height: 0;
+  transform: none;
+  border-color: color-mix(in oklab, var(--dokie-ink) 36%, white);
+  box-shadow: 3px 3px 0 color-mix(in oklab, var(--dokie-blue) 24%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-case-rail .dokie-template-gallery-image {
+  object-position: center;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-ppt-cases .dokie-template-gallery-image {
+  object-fit: cover;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-social-cases .dokie-template-gallery-image {
+  object-fit: cover;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-case-rail .dokie-template-gallery-card figcaption {
+  font-size: 5px;
+  opacity: 0.86;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro {
+  z-index: 5;
+  top: 50%;
+  left: 19%;
+  width: min(280px, 32%);
+  min-width: 240px;
+  justify-items: start;
+  padding: 15px 16px 16px;
+  background: color-mix(in oklab, white 91%, var(--dokie-paper));
+  text-align: left;
+  transform: translate(-50%, -50%) rotate(-1deg);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro .dokie-template-final-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro h4 {
+  max-width: 230px;
+  font-size: 19px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-copy {
+  max-width: 240px;
+  font-size: 9px;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-formats {
+  justify-content: flex-start;
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-ppt-cases {
+    top: 10%;
+    right: -8%;
+    left: 25%;
+    height: 42%;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-social-cases {
+    top: 26%;
+    right: -14%;
+    bottom: 3%;
+    left: 32%;
+  }
+
+  .case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro {
+    left: 25%;
+    width: min(280px, 66%);
+    min-width: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Pixel UI visual pass
+
+   This layer is deliberately visual-only. The accepted Dokie composition
+   stays intact: no layout, sizing, ordering, or interaction rules are
+   redefined below.
+   ------------------------------------------------------------------------- */
+
+.screen-panel-case:has(.case-page-frame.has-dokie-page) {
+  background-color: #e7f5fa;
+  background-image: none !important;
+}
+
+.case-page-frame.has-dokie-page {
+  background-color: var(--dokie-pixel-surface);
+  background-image: none !important;
+}
+
+.case-page-frame.has-dokie-page .dokie-page {
+  position: relative;
+  isolation: isolate;
+  color: var(--dokie-pixel-ink);
+  background-color: var(--dokie-pixel-surface);
+  background-image: none;
+}
+
+.case-page-frame.has-dokie-page .dokie-page::before,
+.case-page-frame.has-dokie-page .dokie-page::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.case-page-frame.has-dokie-page .dokie-page::before {
+  top: 0;
+  right: 0;
+  background: var(--dokie-pixel-lime);
+  box-shadow:
+    -12px 0 0 var(--dokie-pixel-cyan),
+    -24px 0 0 var(--dokie-pixel-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-page::after {
+  right: 0;
+  bottom: 0;
+  background: var(--dokie-pixel-warm);
+  box-shadow:
+    -12px 0 0 var(--dokie-pixel-cyan),
+    -24px 0 0 var(--dokie-pixel-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.case-page-frame.has-dokie-page .dokie-panel-label,
+.case-page-frame.has-dokie-page .dokie-execution-label,
+.case-page-frame.has-dokie-page .dokie-execution-current strong,
+.case-page-frame.has-dokie-page .dokie-artifact-header-title,
+.case-page-frame.has-dokie-page .dokie-artifact-status,
+.case-page-frame.has-dokie-page .dokie-artifact-proof-label,
+.case-page-frame.has-dokie-page .dokie-artifact-overview-header,
+.case-page-frame.has-dokie-page .dokie-template-final-count,
+.case-page-frame.has-dokie-page .dokie-template-gallery-card figcaption,
+.case-page-frame.has-dokie-page .dokie-template-final-formats span,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-label,
+.case-page-frame.has-dokie-page .dokie-ppt-page-count {
+  font-family: var(--dokie-pixel-font-control);
+  font-weight: 700;
+}
+
+.case-page-frame.has-dokie-page .dokie-brand-lockup strong,
+.case-page-frame.has-dokie-page .dokie-execution-heading h4,
+.case-page-frame.has-dokie-page .dokie-execution-input h4,
+.case-page-frame.has-dokie-page .dokie-execution-center h4,
+.case-page-frame.has-dokie-page .dokie-execution-output h4,
+.case-page-frame.has-dokie-page .dokie-format-input h4,
+.case-page-frame.has-dokie-page .dokie-template-final-intro h4 {
+  font-family: var(--dokie-pixel-font-display);
+  font-weight: 400;
+}
+
+.case-page-frame.has-dokie-page .dokie-brand-lockup strong,
+.case-page-frame.has-dokie-page .dokie-execution-heading h4,
+.case-page-frame.has-dokie-page .dokie-execution-input h4,
+.case-page-frame.has-dokie-page .dokie-execution-center h4,
+.case-page-frame.has-dokie-page .dokie-execution-output h4,
+.case-page-frame.has-dokie-page .dokie-format-input h4,
+.case-page-frame.has-dokie-page .dokie-template-final-intro h4 {
+  text-shadow: 2px 2px 0 color-mix(in srgb, var(--dokie-pixel-cyan) 58%, transparent);
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button,
+.case-page-frame.has-dokie-page .dokie-artifact-controls button,
+.case-page-frame.has-dokie-page .dokie-artifact-thumbs button,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button,
+.case-page-frame.has-dokie-page .dokie-execution-controls button,
+.case-page-frame.has-dokie-page .dokie-execution-refine button,
+.case-page-frame.has-dokie-page .dokie-template-product-link,
+.case-page-frame.has-dokie-page .dokie-artifact-overview-canvas {
+  border: 2px solid var(--dokie-pixel-line);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end), background-color 120ms steps(2, end), filter 120ms linear;
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button,
+.case-page-frame.has-dokie-page .dokie-execution-controls button,
+.case-page-frame.has-dokie-page .dokie-execution-refine button {
+  background-color: var(--dokie-pixel-paper);
+  color: var(--dokie-pixel-ink);
+  font-family: var(--dokie-pixel-font-control);
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button.is-active,
+.case-page-frame.has-dokie-page .dokie-execution-controls .dokie-execution-run,
+.case-page-frame.has-dokie-page .dokie-execution-refine button.is-active {
+  border-color: var(--dokie-pixel-ink);
+  background-color: var(--dokie-pixel-blue);
+  color: var(--dokie-pixel-paper);
+  box-shadow: 3px 3px 0 var(--dokie-pixel-ink);
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-format-tabs button:not(:disabled):focus-visible,
+.case-page-frame.has-dokie-page .dokie-artifact-controls button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-artifact-controls button:not(:disabled):focus-visible,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button:not(:disabled):focus-visible,
+.case-page-frame.has-dokie-page .dokie-execution-controls button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-execution-controls button:not(:disabled):focus-visible,
+.case-page-frame.has-dokie-page .dokie-execution-refine button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-execution-refine button:not(:disabled):focus-visible,
+.case-page-frame.has-dokie-page .dokie-template-product-link:hover,
+.case-page-frame.has-dokie-page .dokie-template-product-link:focus-visible {
+  outline: 3px solid var(--dokie-pixel-lime);
+  outline-offset: 2px;
+  filter: brightness(1.04);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button:not(:disabled):active,
+.case-page-frame.has-dokie-page .dokie-artifact-controls button:not(:disabled):active,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button:not(:disabled):active,
+.case-page-frame.has-dokie-page .dokie-execution-controls button:not(:disabled):active,
+.case-page-frame.has-dokie-page .dokie-execution-refine button:not(:disabled):active,
+.case-page-frame.has-dokie-page .dokie-template-product-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-format-tabs button:focus-visible,
+.case-page-frame.has-dokie-page .dokie-artifact-controls button:focus-visible,
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button:focus-visible,
+.case-page-frame.has-dokie-page .dokie-execution-controls button:focus-visible,
+.case-page-frame.has-dokie-page .dokie-execution-refine button:focus-visible,
+.case-page-frame.has-dokie-page .dokie-template-product-link:focus-visible,
+.case-page-frame.has-dokie-page .dokie-artifact-overview-canvas:focus-visible {
+  outline: 3px solid var(--dokie-pixel-lime);
+  outline-offset: 2px;
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-page-button {
+  border: 2px solid var(--dokie-pixel-line) !important;
+  border-radius: 0 !important;
+  background-color: var(--dokie-pixel-paper) !important;
+  box-shadow: 3px 3px 0 var(--dokie-pixel-shadow) !important;
+  color: var(--dokie-pixel-ink) !important;
+  font-family: var(--dokie-pixel-font-control) !important;
+  font-size: 18px !important;
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-page-button:not(:disabled):hover,
+.case-page-frame.has-dokie-page .dokie-ppt-page-button:not(:disabled):focus-visible {
+  outline: 3px solid var(--dokie-pixel-lime);
+  outline-offset: 2px;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--dokie-pixel-shadow) !important;
+}
+
+.case-page-frame.has-dokie-page .dokie-tag-row span,
+.case-page-frame.has-dokie-page .dokie-input-tags span,
+.case-page-frame.has-dokie-page .dokie-brand-lockup img,
+.case-page-frame.has-dokie-page .dokie-home-shot,
+.case-page-frame.has-dokie-page .dokie-workflow-panel,
+.case-page-frame.has-dokie-page .dokie-format-input,
+.case-page-frame.has-dokie-page .dokie-format-visual,
+.case-page-frame.has-dokie-page .dokie-gallery-stage,
+.case-page-frame.has-dokie-page .dokie-gallery-main {
+  border-radius: 0;
+  border-color: var(--dokie-pixel-line);
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-tag-row span,
+.case-page-frame.has-dokie-page .dokie-input-tags span {
+  border-width: 2px;
+  background-color: var(--dokie-pixel-paper);
+  color: var(--dokie-pixel-ink);
+}
+
+.case-page-frame.has-dokie-page .dokie-intro-page,
+.case-page-frame.has-dokie-page .dokie-format-showcase-page,
+.case-page-frame.has-dokie-page .dokie-execution-page {
+  background-color: var(--dokie-pixel-surface);
+  background-image: none;
+}
+
+.case-page-frame.has-dokie-page .dokie-home-shot,
+.case-page-frame.has-dokie-page .dokie-format-input,
+.case-page-frame.has-dokie-page .dokie-format-visual,
+.case-page-frame.has-dokie-page .dokie-gallery-stage,
+.case-page-frame.has-dokie-page .dokie-gallery-main,
+.case-page-frame.has-dokie-page .dokie-workflow-panel {
+  background-color: var(--dokie-pixel-paper);
+  background-image: none;
+}
+
+/* Evidence frames stay sharp and quiet; the pixel treatment belongs to the
+   surrounding UI chrome, never to the actual customer output. */
+.case-page-frame.has-dokie-page .dokie-artifact-image,
+.case-page-frame.has-dokie-page .dokie-artifact-overview-image,
+.case-page-frame.has-dokie-page .dokie-template-gallery-image,
+.case-page-frame.has-dokie-page .dokie-home-shot img {
+  image-rendering: auto;
+}
+
+.case-page-frame.has-dokie-page .dokie-artifact-shell,
+.case-page-frame.has-dokie-page .dokie-artifact-overview,
+.case-page-frame.has-dokie-page .dokie-artifact-overview-canvas,
+.case-page-frame.has-dokie-page .dokie-artifact-viewer,
+.case-page-frame.has-dokie-page .dokie-ppt-stage,
+.case-page-frame.has-dokie-page .dokie-social-stage {
+  border-radius: 0;
+  border-color: var(--dokie-pixel-line);
+  background-color: var(--dokie-pixel-paper);
+  background-image: none;
+}
+
+.case-page-frame.has-dokie-page .dokie-artifact-shell,
+.case-page-frame.has-dokie-page .dokie-artifact-overview,
+.case-page-frame.has-dokie-page .dokie-ppt-stage,
+.case-page-frame.has-dokie-page .dokie-social-stage {
+  border-width: 2px;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-stage,
+.case-page-frame.has-dokie-page .dokie-social-stage {
+  background-color: var(--dokie-pixel-surface-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-canvas,
+.case-page-frame.has-dokie-page .dokie-social-canvas {
+  border-radius: 0;
+  border: 2px solid var(--dokie-pixel-line);
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button,
+.case-page-frame.has-dokie-page .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button {
+  border-radius: 0;
+  border-color: var(--dokie-pixel-line);
+  box-shadow: 3px 3px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button.is-active,
+.case-page-frame.has-dokie-page .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button.is-active {
+  border-color: var(--dokie-pixel-blue);
+  box-shadow: 4px 4px 0 var(--dokie-pixel-lime);
+  transform: translate(-1px, -1px);
+}
+
+/* The format reader has intentionally specific legacy selectors for its
+   reader geometry. Match that specificity here so the pixel treatment wins
+   without touching the geometry itself. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-canvas,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-ppt-stage,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-social-stage {
+  border-radius: 0 !important;
+  border-color: var(--dokie-pixel-line) !important;
+  background-image: none !important;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow) !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-canvas,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-ppt-stage,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-social-stage {
+  border-width: 2px !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-overview-canvas {
+  background-color: var(--dokie-pixel-paper) !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button {
+  border: 2px solid var(--dokie-pixel-line) !important;
+  border-radius: 0 !important;
+  background-color: var(--dokie-pixel-paper) !important;
+  box-shadow: 3px 3px 0 var(--dokie-pixel-shadow) !important;
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-ppt .dokie-ppt-thumb-rail button.is-active,
+.case-page-frame.has-dokie-page[data-page-type="dokie-formats"] .dokie-artifact-shell.is-social .dokie-ppt-thumb-rail button.is-active {
+  border-color: var(--dokie-pixel-blue) !important;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-lime) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Execution page: make each state read like a deliberate pixel panel. */
+.case-page-frame.has-dokie-page .dokie-execution-header {
+  border-bottom: 2px solid var(--dokie-pixel-line);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-current,
+.case-page-frame.has-dokie-page .dokie-execution-input,
+.case-page-frame.has-dokie-page .dokie-execution-center,
+.case-page-frame.has-dokie-page .dokie-execution-output,
+.case-page-frame.has-dokie-page .dokie-execution-ready,
+.case-page-frame.has-dokie-page .dokie-execution-parse-grid article,
+.case-page-frame.has-dokie-page .dokie-execution-review article,
+.case-page-frame.has-dokie-page .dokie-execution-template,
+.case-page-frame.has-dokie-page .dokie-execution-tools li,
+.case-page-frame.has-dokie-page .dokie-execution-build-meter,
+.case-page-frame.has-dokie-page .dokie-execution-output-empty,
+.case-page-frame.has-dokie-page .dokie-execution-slide-stack article {
+  border-radius: 0;
+  border-color: var(--dokie-pixel-line);
+  background-color: var(--dokie-pixel-paper);
+  background-image: none;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-current,
+.case-page-frame.has-dokie-page .dokie-execution-ready,
+.case-page-frame.has-dokie-page .dokie-execution-template,
+.case-page-frame.has-dokie-page .dokie-execution-output-empty {
+  border-width: 2px;
+  background-color: var(--dokie-pixel-surface-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-rail li {
+  border-top-width: 3px;
+  border-color: var(--dokie-pixel-line);
+  font-family: var(--dokie-pixel-font-control);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-rail li.is-complete {
+  border-color: var(--dokie-pixel-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-rail li.is-active {
+  border-color: var(--dokie-pixel-lime);
+  background-color: var(--dokie-pixel-blue);
+  color: var(--dokie-pixel-paper);
+  box-shadow: 3px 3px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-prompt {
+  border-width: 2px;
+  border-radius: 0;
+  border-color: var(--dokie-pixel-blue);
+  background-color: var(--dokie-pixel-surface-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-meter-track,
+.case-page-frame.has-dokie-page .dokie-execution-meter-track i {
+  border-radius: 0;
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-meter-track {
+  border: 2px solid var(--dokie-pixel-line);
+  background-color: var(--dokie-pixel-surface-blue);
+}
+
+.case-page-frame.has-dokie-page .dokie-execution-meter-track i {
+  background-color: var(--dokie-pixel-lime);
+}
+
+/* Final template wall: keep the approved collage composition, but remove
+   soft UI chrome so the real case outputs sit inside a crisp pixel frame. */
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-stage {
+  border-width: 3px;
+  border-color: var(--dokie-pixel-line);
+  background-color: #eef0ed;
+  background-image: none;
+  box-shadow: 5px 5px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-gallery::before {
+  box-shadow: 8px 0 0 color-mix(in srgb, var(--dokie-pixel-ink) 12%, transparent);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-case-rail .dokie-template-gallery-card {
+  border-width: 2px;
+  border-color: var(--dokie-pixel-line);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--dokie-pixel-shadow);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-intro {
+  border-width: 3px;
+  border-color: var(--dokie-pixel-line);
+  border-radius: 0;
+  background-color: var(--dokie-pixel-paper);
+  background-image: none;
+  box-shadow: 5px 5px 0 var(--dokie-pixel-blue);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-final-formats span {
+  border-width: 2px;
+  border-color: var(--dokie-pixel-blue);
+  border-radius: 0;
+  background-color: var(--dokie-pixel-surface-blue);
+  color: var(--dokie-pixel-ink);
+  box-shadow: 2px 2px 0 var(--dokie-pixel-cyan);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link {
+  border-color: var(--dokie-pixel-ink);
+  border-radius: 0;
+  background-color: var(--dokie-pixel-blue);
+  box-shadow: 4px 4px 0 var(--dokie-pixel-lime);
+  color: var(--dokie-pixel-paper);
+  font-family: var(--dokie-pixel-font-control);
+}
+
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link:hover,
+.case-page-frame.has-dokie-page[data-page-type="dokie-template"] .dokie-template-product-link:focus-visible {
+  box-shadow: 6px 6px 0 var(--dokie-pixel-lime);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-page-frame.has-dokie-page .dokie-format-tabs button,
+  .case-page-frame.has-dokie-page .dokie-artifact-controls button,
+  .case-page-frame.has-dokie-page .dokie-ppt-thumb-rail button,
+  .case-page-frame.has-dokie-page .dokie-execution-controls button,
+  .case-page-frame.has-dokie-page .dokie-execution-refine button,
+  .case-page-frame.has-dokie-page .dokie-template-product-link {
+    transition: none;
+  }
+}

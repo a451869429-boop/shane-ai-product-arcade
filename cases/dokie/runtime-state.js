@@ -1,0 +1,20 @@
+// Dokie-owned mutable runtime capsule. Execution and artifact state stay independent.
+export const runtimeState = {
+  formatIndex: 0,
+  artifactIndex: 0,
+  artifactScroll: 0,
+  templateStageIndex: 0,
+  templateRoleIndex: 0,
+  templateTaskIndex: 0,
+  templateToken: "Color",
+  executionStage: "start",
+  executionParseIndex: -1,
+  executionPlanIndex: -1,
+  executionToolIndex: -1,
+  executionSlideCount: 0,
+  executionQualityIndex: -1,
+  executionPlaying: false,
+  executionEntered: false,
+  executionTimer: null,
+  refineAction: "",
+};

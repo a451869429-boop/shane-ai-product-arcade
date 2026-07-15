@@ -1,0 +1,2275 @@
+/* Viva Video ownership surface. New Viva-only CSS belongs here. */
+
+/* AI Play Shelf v2: the selection rail and product reconstructions are kept
+ * inside this Case-owned stylesheet so the legacy shell remains unchanged. */
+.case-page-frame.has-viva-page .viva-shelf-page {
+  --viva-ink: oklch(0.21 0.03 260);
+  --viva-paper: oklch(0.96 0.018 84);
+  --viva-coral: oklch(0.68 0.17 34);
+  --viva-blue: oklch(0.68 0.11 242);
+  display: grid;
+  grid-template-columns: 172px minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-areas: "shelf visual notes";
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--viva-ink);
+}
+
+.case-page-frame.has-viva-page .viva-play-list {
+  grid-area: shelf;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 4px 3px 2px;
+}
+
+.case-page-frame.has-viva-page .viva-play-list button {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px 5px;
+  min-width: 0;
+  min-height: 46px;
+  padding: 5px;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  color: var(--viva-ink);
+  background: var(--viva-paper);
+  box-shadow: 3px 3px 0 var(--viva-blue);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.case-page-frame.has-viva-page .viva-play-list button:hover,
+.case-page-frame.has-viva-page .viva-play-list button:focus-visible {
+  outline: 3px solid var(--viva-ink);
+  outline-offset: 2px;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--viva-blue);
+}
+
+.case-page-frame.has-viva-page .viva-play-list button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--viva-blue);
+}
+
+.case-page-frame.has-viva-page .viva-play-list button.is-active {
+  background: var(--viva-coral);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--viva-blue);
+}
+
+.case-page-frame.has-viva-page .viva-play-icon {
+  display: grid;
+  grid-row: 1 / -1;
+  place-items: center;
+  align-self: start;
+  width: 23px;
+  height: 23px;
+  border: 2px solid var(--viva-ink);
+  color: var(--viva-ink);
+  background: white;
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.case-page-frame.has-viva-page .viva-play-title,
+.case-page-frame.has-viva-page .viva-play-kind {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.case-page-frame.has-viva-page .viva-play-title {
+  align-self: end;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.case-page-frame.has-viva-page .viva-play-kind {
+  display: none;
+  color: color-mix(in oklab, var(--viva-ink) 72%, white);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1.15;
+}
+
+.case-page-frame.has-viva-page .viva-play-list button.is-active .viva-play-kind {
+  color: color-mix(in oklab, var(--viva-ink) 86%, var(--viva-coral));
+}
+
+.case-page-frame.has-viva-page .viva-play-visual {
+  position: relative;
+  grid-area: visual;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  box-shadow: 4px 4px 0 var(--viva-coral);
+}
+
+.case-page-frame.has-viva-page .viva-visual-header {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  inset: 8px 8px auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.case-page-frame.has-viva-page .viva-panel-label {
+  min-width: 0;
+  margin: 0;
+  color: var(--viva-coral);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+.case-page-frame.has-viva-page .viva-reconstruction-badge {
+  flex: 0 0 auto;
+  padding: 4px 5px;
+  border: 1px solid var(--viva-ink);
+  color: var(--viva-ink);
+  background: color-mix(in oklab, var(--viva-blue) 22%, white);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.case-page-frame.has-viva-page .viva-ui-reconstruction {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--viva-paper);
+}
+
+.case-page-frame.has-viva-page .viva-ui-reconstruction img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  background: var(--viva-paper);
+  transform: scale(1.58);
+  transform-origin: center top;
+}
+
+.case-page-frame.has-viva-page .viva-ui-reconstruction figcaption {
+  display: none;
+  position: absolute;
+  right: 8px;
+  bottom: 7px;
+  z-index: 2;
+  padding: 3px 5px;
+  color: color-mix(in oklab, var(--viva-ink) 72%, white);
+  background: color-mix(in oklab, var(--viva-paper) 82%, transparent);
+  font-family: var(--pixel-font);
+  font-size: 6px;
+  line-height: 1.2;
+}
+
+.case-page-frame.has-viva-page .viva-journey-panel {
+  grid-area: journey;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  box-shadow: 4px 4px 0 var(--viva-blue);
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail button {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 5px;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  color: var(--viva-ink);
+  background: var(--viva-paper);
+  box-shadow: 3px 3px 0 var(--viva-blue);
+  cursor: pointer;
+  font-size: 8px;
+  text-align: left;
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail button:hover,
+.case-page-frame.has-viva-page .viva-journey-rail button:focus-visible {
+  outline: 3px solid var(--viva-ink);
+  outline-offset: 2px;
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail button.is-active {
+  background: var(--viva-coral);
+  transform: translate(-2px, -2px);
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail button.is-complete {
+  background: color-mix(in oklab, var(--viva-blue) 25%, white);
+}
+
+.case-page-frame.has-viva-page .viva-journey-rail span {
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.case-page-frame.has-viva-page .viva-journey-copy h4,
+.case-page-frame.has-viva-page .viva-journey-copy p {
+  margin: 5px 0 0;
+}
+
+.case-page-frame.has-viva-page .viva-journey-copy h4 {
+  font-size: 13px;
+}
+
+.case-page-frame.has-viva-page .viva-journey-copy p,
+.case-page-frame.has-viva-page .viva-module-summary,
+.case-page-frame.has-viva-page .viva-module-facts p {
+  color: color-mix(in oklab, var(--viva-ink) 72%, white);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.case-page-frame.has-viva-page .viva-journey-next {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  color: var(--viva-ink);
+  background: var(--viva-coral);
+  box-shadow: 3px 3px 0 var(--viva-blue);
+  cursor: pointer;
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.case-page-frame.has-viva-page .viva-journey-next:hover,
+.case-page-frame.has-viva-page .viva-journey-next:focus-visible {
+  outline: 3px solid var(--viva-ink);
+  outline-offset: 2px;
+}
+
+.case-page-frame.has-viva-page .viva-play-notes {
+  grid-area: notes;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  box-shadow: 4px 4px 0 var(--viva-coral);
+}
+
+.case-page-frame.has-viva-page .viva-module-intro {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  height: 100%;
+  min-width: 0;
+  padding: 10px;
+}
+
+.case-page-frame.has-viva-page .viva-module-intro h4 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.case-page-frame.has-viva-page .viva-module-summary {
+  margin: 0;
+}
+
+.case-page-frame.has-viva-page .viva-module-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  min-width: 0;
+  margin-top: 3px;
+}
+
+.case-page-frame.has-viva-page .viva-module-facts article {
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid color-mix(in oklab, var(--viva-blue) 62%, var(--viva-ink));
+  background: color-mix(in oklab, white 88%, var(--viva-blue));
+}
+
+.case-page-frame.has-viva-page .viva-module-facts strong {
+  display: block;
+  font-size: 9px;
+}
+
+.case-page-frame.has-viva-page .viva-module-facts p {
+  margin: 3px 0 0;
+}
+
+@media (max-width: 860px) {
+  .case-page-frame.has-viva-page .viva-shelf-page {
+    grid-template-columns: 140px minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .case-page-frame.has-viva-page .viva-shelf-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(44px, auto) minmax(280px, 52vh) minmax(180px, auto);
+    grid-template-areas:
+      "shelf"
+      "visual"
+      "notes";
+    height: auto;
+    overflow: visible;
+  }
+
+  .case-page-frame.has-viva-page .viva-play-list {
+    display: flex;
+    gap: 6px;
+    min-height: 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 3px 4px 5px 2px;
+  }
+
+  .case-page-frame.has-viva-page .viva-play-list button {
+    flex: 0 0 154px;
+  }
+
+  .case-page-frame.has-viva-page .viva-play-visual {
+    min-height: 280px;
+  }
+
+  .case-page-frame.has-viva-page .viva-play-notes {
+    min-height: 180px;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 420px) {
+  .case-page-frame.has-viva-page .viva-play-list button {
+    flex-basis: 142px;
+    padding: 7px;
+  }
+
+  .case-page-frame.has-viva-page .viva-play-title {
+    font-size: 10px;
+  }
+
+  .case-page-frame.has-viva-page .viva-visual-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .case-page-frame.has-viva-page .viva-module-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .case-page-frame.has-viva-page .viva-journey-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-page-frame.has-viva-page .viva-play-list button,
+  .case-page-frame.has-viva-page .viva-journey-rail button,
+  .case-page-frame.has-viva-page .viva-journey-next {
+    transition: none;
+  }
+}
+
+/* Viva Video orange / black theme: follow the home selector's card language
+ * while keeping the product evidence and the four-page Case flow intact. */
+.screen-panel-case[data-case-theme="creator"] {
+  --viva-ink: oklch(0.16 0.025 45);
+  --viva-paper: oklch(0.965 0.025 78);
+  --viva-orange: oklch(0.68 0.18 42);
+  --viva-orange-deep: oklch(0.48 0.14 38);
+  --viva-orange-soft: oklch(0.87 0.10 62);
+  --viva-muted: oklch(0.36 0.065 38);
+  color: var(--viva-ink);
+  background-color: var(--viva-orange-soft);
+  background-image: repeating-linear-gradient(
+    0deg,
+    oklch(0.16 0.025 45 / 0.06) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.screen-panel-case[data-case-theme="creator"] .screen-header,
+.screen-panel-case[data-case-theme="creator"] .screen-footer,
+.screen-panel-case[data-case-theme="creator"] .case-page-status {
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-status {
+  border-color: color-mix(in oklab, var(--viva-ink) 36%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page {
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page .case-page-copy {
+  border-color: color-mix(in oklab, var(--viva-ink) 46%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page .case-page-copy h3,
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page .case-page-copy p {
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-intro-page,
+.screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-intro-copy {
+  padding: 12px;
+  border: 2px solid var(--viva-ink);
+  background: var(--viva-ink);
+  box-shadow: 4px 4px 0 var(--viva-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-intro-copy p {
+  color: var(--viva-paper);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-tag-row span,
+.screen-panel-case[data-case-theme="creator"] .viva-evidence-row span {
+  border: 2px solid var(--viva-ink);
+  background: var(--viva-orange);
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-store-shot {
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  box-shadow: 8px 8px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-shelf-page {
+  --viva-ink: oklch(0.16 0.025 45);
+  --viva-paper: oklch(0.965 0.025 78);
+  --viva-orange: oklch(0.68 0.18 42);
+  --viva-orange-deep: oklch(0.48 0.14 38);
+  --viva-orange-soft: oklch(0.87 0.10 62);
+  --viva-muted: oklch(0.36 0.065 38);
+  padding: 8px;
+  border: 2px solid var(--viva-ink);
+  background: var(--viva-orange);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list {
+  position: relative;
+  display: block;
+  padding: 10px 8px 10px 18px;
+  overflow: visible;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list::before {
+  content: ">";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  z-index: 8;
+  color: var(--viva-orange);
+  font-family: var(--pixel-font);
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--viva-ink);
+  transform: translateY(-50%);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button {
+  position: absolute;
+  left: 18px;
+  right: 8px;
+  top: 50%;
+  z-index: 1;
+  grid-template-columns: 24px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  min-height: 50px;
+  margin: 0;
+  padding: 7px;
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  color: var(--viva-ink);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+  transition: transform 160ms steps(2, end), box-shadow 160ms steps(2, end), background 160ms ease, color 160ms ease;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="0"] {
+  z-index: 6;
+  --viva-card-transform: translate(7px, -50%) rotate(0deg) scale(1);
+  transform: translate(7px, -50%) rotate(0deg) scale(1);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="-1"] {
+  z-index: 4;
+  opacity: 0.72;
+  --viva-card-transform: translate(-2px, calc(-50% - 54px)) rotate(-4deg) scale(0.88);
+  transform: translate(-2px, calc(-50% - 54px)) rotate(-4deg) scale(0.88);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="1"] {
+  z-index: 4;
+  opacity: 0.72;
+  --viva-card-transform: translate(-5px, calc(-50% + 54px)) rotate(4deg) scale(0.88);
+  transform: translate(-5px, calc(-50% + 54px)) rotate(4deg) scale(0.88);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="-2"] {
+  z-index: 2;
+  opacity: 0.34;
+  filter: blur(0.8px);
+  --viva-card-transform: translate(-16px, calc(-50% - 102px)) rotate(-7deg) scale(0.76);
+  transform: translate(-16px, calc(-50% - 102px)) rotate(-7deg) scale(0.76);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="2"] {
+  z-index: 2;
+  opacity: 0.34;
+  filter: blur(0.8px);
+  --viva-card-transform: translate(-19px, calc(-50% + 102px)) rotate(7deg) scale(0.76);
+  transform: translate(-19px, calc(-50% + 102px)) rotate(7deg) scale(0.76);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="3"] {
+  z-index: 1;
+  opacity: 0.16;
+  filter: blur(1.4px);
+  --viva-card-transform: translate(-23px, calc(-50% + 142px)) rotate(10deg) scale(0.64);
+  transform: translate(-23px, calc(-50% + 142px)) rotate(10deg) scale(0.64);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button[data-viva-pos="-3"] {
+  z-index: 1;
+  opacity: 0.16;
+  filter: blur(1.4px);
+  --viva-card-transform: translate(-23px, calc(-50% - 142px)) rotate(-10deg) scale(0.64);
+  transform: translate(-23px, calc(-50% - 142px)) rotate(-10deg) scale(0.64);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:focus-visible {
+  z-index: 7;
+  outline: 3px solid var(--viva-orange);
+  outline-offset: 2px;
+  transform: var(--viva-card-transform, none);
+  box-shadow: 6px 6px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:hover {
+  outline: none;
+  outline-offset: 0;
+  transform: var(--viva-card-transform, none);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:active {
+  transform: var(--viva-card-transform, none);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button.is-active {
+  z-index: 6;
+  border-color: var(--viva-ink);
+  background: var(--viva-ink);
+  color: var(--viva-orange);
+  transform: translate(7px, -50%) rotate(0deg) scale(1);
+  box-shadow: 6px 6px 0 var(--viva-orange);
+}
+
+/* Compatibility for the already-open page using the previous app.js cache. */
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(1):not(.is-active) {
+  z-index: 2;
+  opacity: 0.34;
+  filter: blur(0.8px);
+  --viva-card-transform: translate(-16px, calc(-50% - 102px)) rotate(-7deg) scale(0.76);
+  transform: translate(-16px, calc(-50% - 102px)) rotate(-7deg) scale(0.76);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(2):not(.is-active) {
+  z-index: 4;
+  opacity: 0.72;
+  --viva-card-transform: translate(-2px, calc(-50% - 54px)) rotate(-4deg) scale(0.88);
+  transform: translate(-2px, calc(-50% - 54px)) rotate(-4deg) scale(0.88);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(3):not(.is-active) {
+  z-index: 4;
+  opacity: 0.72;
+  --viva-card-transform: translate(-5px, calc(-50% + 54px)) rotate(4deg) scale(0.88);
+  transform: translate(-5px, calc(-50% + 54px)) rotate(4deg) scale(0.88);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(4):not(.is-active) {
+  z-index: 2;
+  opacity: 0.34;
+  filter: blur(0.8px);
+  --viva-card-transform: translate(-19px, calc(-50% + 102px)) rotate(7deg) scale(0.76);
+  transform: translate(-19px, calc(-50% + 102px)) rotate(7deg) scale(0.76);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(5):not(.is-active) {
+  z-index: 1;
+  opacity: 0.16;
+  filter: blur(1.4px);
+  --viva-card-transform: translate(-23px, calc(-50% + 142px)) rotate(10deg) scale(0.64);
+  transform: translate(-23px, calc(-50% + 142px)) rotate(10deg) scale(0.64);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button:not([data-viva-pos]):nth-child(6):not(.is-active) {
+  z-index: 1;
+  opacity: 0.16;
+  filter: blur(1.4px);
+  --viva-card-transform: translate(-23px, calc(-50% - 142px)) rotate(-10deg) scale(0.64);
+  transform: translate(-23px, calc(-50% - 142px)) rotate(-10deg) scale(0.64);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-list button.is-active .viva-play-icon {
+  border-color: var(--viva-orange);
+  background: var(--viva-orange);
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-icon {
+  border-color: var(--viva-ink);
+  background: var(--viva-orange-soft);
+  color: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-title {
+  color: inherit;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-visual,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-panel,
+.screen-panel-case[data-case-theme="creator"] .viva-play-notes {
+  border-color: var(--viva-ink);
+  background: var(--viva-paper);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-panel {
+  display: none;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-play-notes {
+  align-self: stretch;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-ui-reconstruction img {
+  pointer-events: none;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-intro {
+  gap: 10px;
+  padding: 14px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-intro h4 {
+  font-size: clamp(17px, 1.8vw, 26px);
+  line-height: 1.05;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-summary {
+  max-width: 30ch;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-facts {
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-facts article {
+  padding: 9px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-panel,
+.screen-panel-case[data-case-theme="creator"] .viva-play-notes {
+  padding: 9px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-panel-label,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-kicker {
+  color: var(--viva-orange-deep);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-reconstruction-badge,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-rail button,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-next {
+  border-color: var(--viva-ink);
+  background: var(--viva-paper);
+  color: var(--viva-ink);
+  box-shadow: 3px 3px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-rail button:hover,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-rail button:focus-visible,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-next:hover,
+.screen-panel-case[data-case-theme="creator"] .viva-journey-next:focus-visible {
+  outline-color: var(--viva-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-rail button.is-active {
+  background: var(--viva-ink);
+  color: var(--viva-orange);
+  box-shadow: 3px 3px 0 var(--viva-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-rail button.is-complete {
+  background: var(--viva-orange-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-next {
+  background: var(--viva-ink);
+  color: var(--viva-orange);
+  box-shadow: 3px 3px 0 var(--viva-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-journey-copy p,
+.screen-panel-case[data-case-theme="creator"] .viva-module-summary,
+.screen-panel-case[data-case-theme="creator"] .viva-module-facts p {
+  color: var(--viva-muted);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-module-facts article {
+  border-color: var(--viva-ink);
+  background: var(--viva-orange-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+  padding: 8px;
+  border: 2px solid var(--viva-ink);
+  background: var(--viva-orange);
+  box-shadow: 4px 4px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop::before {
+  background: var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop li,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-grid button {
+  border: 2px solid var(--viva-ink);
+  border-radius: 0;
+  background: var(--viva-paper);
+  color: var(--viva-ink);
+  box-shadow: 3px 3px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop li.is-active,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-grid button.is-active {
+  background: var(--viva-ink);
+  color: var(--viva-orange);
+  box-shadow: 3px 3px 0 var(--viva-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-detail {
+  border: 2px solid var(--viva-ink);
+  background: var(--viva-paper);
+  box-shadow: 3px 3px 0 var(--viva-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail span,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-detail span {
+  color: var(--viva-orange-deep);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop p,
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail p,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-grid p,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-detail p,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-note {
+  color: var(--viva-muted);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-page {
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.34fr);
+  gap: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop li {
+  min-height: 128px;
+  padding: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-creation-loop p {
+  font-size: 10px;
+  line-height: 1.42;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  padding: 12px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail strong {
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-detail p {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-evidence {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid color-mix(in oklab, var(--viva-ink) 28%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-evidence-label {
+  color: var(--viva-orange-deep);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-evidence .viva-evidence-row {
+  justify-content: flex-start;
+  gap: 5px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-shelf-page {
+    padding: 6px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-play-list {
+    align-content: stretch;
+    gap: 6px;
+    padding: 4px 2px 6px;
+    overflow-x: auto;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-play-list::before {
+    display: none;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-play-list button,
+  .screen-panel-case[data-case-theme="creator"] .viva-play-list button:nth-child(n) {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    flex: 0 0 154px;
+    margin-bottom: 0;
+    transform: none;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-play-list button.is-active {
+    transform: translateY(-3px);
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-loop-page {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-loop-evidence {
+    grid-column: auto;
+  }
+}
+
+/* Digital Human / Workflow Logic v2. The visual language is intentionally
+ * close to the confirmed prototype, but all selectors stay inside Viva. */
+.screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+  --viva-dh-paper: oklch(0.965 0.025 78);
+  --viva-dh-soft: oklch(0.87 0.10 62);
+  --viva-dh-orange: oklch(0.68 0.18 42);
+  --viva-dh-orange-deep: oklch(0.48 0.14 38);
+  --viva-dh-ink: oklch(0.16 0.025 45);
+  --viva-dh-muted: oklch(0.36 0.065 38);
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: var(--viva-dh-orange);
+  box-shadow: 4px 4px 0 var(--viva-dh-ink);
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  display: grid;
+  grid-template-columns: minmax(132px, 0.34fr) minmax(0, 1.32fr) minmax(210px, 0.62fr);
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow {
+  position: relative;
+  z-index: 1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  min-height: 72px;
+  padding: 8px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: var(--viva-dh-paper);
+  box-shadow: 3px 3px 0 var(--viva-dh-ink);
+  text-align: left;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+  filter: saturate(0.55);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card.is-active,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card.is-active {
+  color: var(--viva-dh-orange);
+  background: var(--viva-dh-ink);
+  box-shadow: 4px 4px 0 var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card.is-complete:not(.is-active) {
+  background: oklch(0.79 0.16 104);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card:focus-visible,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card:focus-visible,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button:focus-visible,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice:focus-visible {
+  outline: 3px solid var(--viva-dh-orange);
+  outline-offset: 2px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-index,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-index,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-kicker,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-progress,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-concept-label,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-label,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-label,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-label,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-map-title {
+  color: var(--viva-dh-orange-deep);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card.is-active .viva-dh-step-index,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card.is-active em,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card.is-active .viva-logic-index,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card.is-active em {
+  color: oklch(0.82 0.12 62);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card strong,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card strong {
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card em,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card em {
+  color: var(--viva-dh-muted);
+  font-size: 9px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail {
+  min-width: 0;
+  min-height: 0;
+  border: 2px solid var(--viva-dh-ink);
+  background: var(--viva-dh-paper);
+  box-shadow: 3px 3px 0 var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid color-mix(in oklab, var(--viva-dh-ink) 34%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-progress {
+  color: var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench-body {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  padding: 10px;
+  overflow: auto;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage {
+  display: grid;
+  grid-template-columns: minmax(148px, 0.82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 245px;
+  overflow: hidden;
+  border: 2px dashed var(--viva-dh-muted);
+  background: var(--viva-dh-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-copy {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-copy h3,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel h4,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail h4 {
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 28px);
+  line-height: 1.08;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-copy > p,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel > p,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-question {
+  margin: 0;
+  color: var(--viva-dh-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar {
+  position: relative;
+  width: 122px;
+  height: 180px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar.is-small {
+  transform: scale(0.7);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .head,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .hair,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .eye,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .mouth,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body {
+  position: absolute;
+  display: block;
+  border: 4px solid var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .head { z-index: 2; left: 30px; top: 22px; width: 64px; height: 72px; background: #f6a276; box-shadow: 6px 6px 0 var(--viva-dh-orange); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .hair { z-index: 3; left: 27px; top: 15px; width: 70px; height: 28px; background: #33211b; }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .eye { z-index: 4; top: 57px; width: 7px; height: 7px; border: 0; background: var(--viva-dh-ink); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .eye.left { left: 47px; }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .eye.right { left: 73px; }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .mouth { z-index: 4; left: 52px; top: 77px; width: 21px; height: 5px; border: 0; background: var(--viva-dh-ink); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body { left: 17px; top: 101px; width: 90px; height: 70px; background: #6bd0df; box-shadow: 7px 7px 0 var(--viva-dh-ink); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body::before,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body::after { content: ""; position: absolute; top: 10px; width: 18px; height: 48px; border: 4px solid var(--viva-dh-ink); background: var(--viva-dh-orange); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body::before { left: -29px; transform: rotate(8deg); }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-avatar .body::after { right: -29px; transform: rotate(-8deg); }
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-upload-card,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-script-card {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-upload-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--viva-dh-muted);
+  color: var(--viva-dh-muted);
+  background: #fff3e5;
+  font-size: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-upload-state.is-ready {
+  color: var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-upload-state span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice {
+  padding: 8px 9px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: var(--viva-dh-orange);
+  box-shadow: 3px 3px 0 var(--viva-dh-ink);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button.is-dark {
+  color: var(--viva-dh-paper);
+  background: var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button.is-green {
+  background: oklch(0.79 0.16 104);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button.is-quiet {
+  padding: 5px 7px;
+  color: var(--viva-dh-ink);
+  background: transparent;
+  box-shadow: none;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  filter: saturate(0.5);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  text-align: left;
+  background: #fff3e5;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice span {
+  color: var(--viva-dh-muted);
+  font-family: var(--body-font);
+  font-size: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice.is-selected {
+  color: var(--viva-dh-orange);
+  background: var(--viva-dh-ink);
+  box-shadow: 4px 4px 0 var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice.is-selected span {
+  color: #ffc29b;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-script-card textarea {
+  width: 100%;
+  min-height: 82px;
+  resize: vertical;
+  padding: 8px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: #fff3e5;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-voice-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 72px;
+  padding: 8px;
+  border: 2px solid var(--viva-dh-ink);
+  background: var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-waveform i {
+  display: block;
+  width: 4px;
+  background: oklch(0.79 0.16 104);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-waveform i:nth-child(3n) {
+  background: var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-label {
+  color: var(--viva-dh-muted);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-motion-orbit {
+  position: absolute;
+  width: 178px;
+  height: 178px;
+  border: 2px dotted var(--viva-dh-orange-deep);
+  border-radius: 50%;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-sync-art,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-voice-art,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-compose-art {
+  align-content: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-sync-face {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 12px;
+  border: 2px dashed var(--viva-dh-muted);
+  background: var(--viva-dh-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-sync-face i {
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--viva-dh-ink);
+  background: #6bd0df;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-sync-face i.is-hot {
+  background: var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-video-frame {
+  position: relative;
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  overflow: hidden;
+  border: 3px solid var(--viva-dh-ink);
+  background: var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-draft-badge {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  padding: 4px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-timeline {
+  display: grid;
+  gap: 5px;
+  padding: 7px;
+  border: 2px solid var(--viva-dh-ink);
+  background: var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-timeline span {
+  display: block;
+  height: 12px;
+  padding-left: 5px;
+  color: var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 12px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-timeline span:nth-child(2) { width: 78%; background: #6bd0df; }
+.screen-panel-case[data-case-theme="creator"] .viva-dh-timeline span:nth-child(3) { width: 58%; background: var(--viva-dh-orange); }
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-io,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts {
+  display: grid;
+  gap: 6px;
+  margin: 2px 0 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-io > div,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts > div {
+  display: grid;
+  gap: 3px;
+  padding: 7px;
+  border: 1px solid var(--viva-dh-ink);
+  background: var(--viva-dh-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-io span,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts dt {
+  color: var(--viva-dh-orange-deep);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-io strong,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts dd {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-principle-note {
+  padding: 8px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow-footer,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  padding-top: 2px;
+  color: var(--viva-dh-muted);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow-message {
+  min-width: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  grid-template-columns: minmax(150px, 0.46fr) minmax(0, 1.1fr) minmax(190px, 0.62fr);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+  overflow: auto;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+  min-height: 56px;
+  padding: 6px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail h4 {
+  font-size: clamp(18px, 2.5vw, 32px);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts dd {
+  font-family: var(--body-font);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal {
+  display: grid;
+  gap: 4px;
+  padding: 9px;
+  border: 2px solid var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal p,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal small {
+  margin: 0;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal small {
+  color: var(--viva-dh-muted);
+  font-size: 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-map {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border: 2px solid var(--viva-dh-ink);
+  color: var(--viva-dh-paper);
+  background: var(--viva-dh-ink);
+  box-shadow: 3px 3px 0 var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-map-title {
+  color: var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack {
+  display: grid;
+  gap: 5px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack span {
+  display: block;
+  padding: 9px;
+  border: 2px solid var(--viva-dh-paper);
+  color: var(--viva-dh-ink);
+  background: var(--viva-dh-paper);
+  font-family: var(--pixel-font);
+  font-size: 8px;
+  box-shadow: 3px 3px 0 var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack .is-layer-2 { margin-left: 10px; background: #6bd0df; }
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack .is-layer-3 { margin-left: 20px; background: var(--viva-dh-orange); }
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack .is-layer-4 { margin-left: 30px; background: oklch(0.79 0.16 104); }
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack .is-layer-5 { margin-left: 40px; color: var(--viva-dh-paper); background: var(--viva-dh-orange-deep); }
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-map > p {
+  margin: 0;
+  color: #ffc29b;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-flow,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+    grid-template-columns: minmax(126px, 0.36fr) minmax(0, 1fr);
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-map {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+  .screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+    height: auto;
+    overflow: visible;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-flow,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+    display: flex;
+    overflow-x: auto;
+    padding: 2px 2px 5px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+    flex: 0 0 138px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-map {
+    grid-column: auto;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 420px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-flow-footer,
+  .screen-panel-case[data-case-theme="creator"] .viva-learning-note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-voice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-button,
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-choice {
+    transition: none;
+  }
+}
+
+/* Formal case refinement: use the cabinet's short viewport as a deliberate
+ * interaction surface instead of letting the prototype scale down unchanged. */
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"],
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  gap: 5px !important;
+  min-height: 0 !important;
+}
+
+/* p3 already explains the product intent inside the workbench; keep the
+ * formal cabinet focused on the interactive flow instead of repeating it. */
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"] .case-page-copy {
+  display: none !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"] {
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] .case-page-copy {
+  display: grid !important;
+  grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr);
+  align-items: end;
+  gap: 12px;
+  min-height: 45px !important;
+  padding: 4px 8px !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"] .case-page-copy h3,
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] .case-page-copy h3 {
+  margin: 0 !important;
+  font-size: clamp(17px, 2.2vw, 25px) !important;
+  line-height: 0.98 !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"] .case-page-copy p,
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] .case-page-copy p {
+  margin: 0 !important;
+  align-self: end;
+  font-size: 10px !important;
+  line-height: 1.28 !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+  padding: 6px !important;
+  gap: 6px !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-flow {
+  grid-template-columns: minmax(120px, 0.28fr) minmax(0, 1.45fr) minmax(190px, 0.58fr);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  overflow: hidden;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card {
+  position: relative;
+  min-height: 0 !important;
+  padding: 5px 6px !important;
+  gap: 2px !important;
+  box-shadow: 2px 2px 0 var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card strong {
+  padding-right: 28px;
+  font-size: 11px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card em {
+  padding-right: 3px;
+  font-size: 8px;
+  line-height: 1.12;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-status,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card-status {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 3px;
+  border: 1px solid currentColor;
+  color: var(--viva-dh-orange-deep);
+  font-family: var(--pixel-font);
+  font-size: 6px;
+  line-height: 1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card.is-active .viva-dh-step-status,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card.is-active .viva-logic-card-status {
+  color: var(--viva-dh-orange);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-step-card[data-state="locked"] .viva-dh-step-status {
+  opacity: 0.7;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench-header {
+  align-items: center;
+  min-height: 27px;
+  padding: 5px 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-header-meta,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-layer-status,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-state,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-detail-state,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail-state {
+  padding: 2px 4px;
+  border: 1px solid var(--viva-dh-ink);
+  color: var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  font-family: var(--pixel-font);
+  font-size: 6px;
+  line-height: 1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-progress {
+  padding-left: 5px;
+  border-left: 1px solid color-mix(in oklab, var(--viva-dh-ink) 35%, transparent);
+  font-size: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-workbench-body {
+  padding: 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage {
+  height: 100%;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+  min-height: 0 !important;
+  height: 100%;
+  background-color: var(--viva-dh-soft);
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--viva-dh-muted) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--viva-dh-muted) 14%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
+  filter: saturate(0.92) contrast(1.03);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-tag,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-index {
+  position: absolute;
+  z-index: 2;
+  padding: 3px 4px;
+  color: var(--viva-dh-ink);
+  background: var(--viva-dh-paper);
+  font-family: var(--pixel-font);
+  font-size: 6px;
+  line-height: 1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-tag {
+  top: 6px;
+  left: 6px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-art-index {
+  right: 6px;
+  bottom: 6px;
+  color: var(--viva-dh-paper);
+  background: var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-copy {
+  gap: 6px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-copy h3 {
+  font-size: clamp(17px, 2vw, 25px);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice {
+  cursor: pointer;
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-button:not(:disabled):active,
+.screen-panel-case[data-case-theme="creator"] .viva-dh-choice:not(:disabled):active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-layer-status {
+  justify-content: flex-start;
+  padding-bottom: 6px;
+  border-bottom: 1px solid color-mix(in oklab, var(--viva-dh-ink) 28%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-status-dot {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--viva-dh-ink);
+  background: oklch(0.79 0.16 104);
+  box-shadow: 2px 2px 0 var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-layer-status strong {
+  color: var(--viva-dh-ink);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-layer-status small {
+  margin-left: auto;
+  color: var(--viva-dh-muted);
+  font-size: 9px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  grid-template-columns: minmax(132px, 0.42fr) minmax(0, 1.2fr) minmax(185px, 0.62fr);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  overflow: hidden;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+  position: relative;
+  min-height: 0 !important;
+  padding: 7px !important;
+  gap: 3px !important;
+  box-shadow: 2px 2px 0 var(--viva-dh-ink);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card strong {
+  padding-right: 26px;
+  font-size: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-card em {
+  font-size: 8px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail {
+  gap: 7px;
+  padding: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail-header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid color-mix(in oklab, var(--viva-dh-ink) 28%, transparent);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-prompt {
+  display: grid;
+  gap: 3px;
+  padding: 7px;
+  border-left: 4px solid var(--viva-dh-orange);
+  background: var(--viva-dh-soft);
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-prompt-label,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal-label {
+  color: var(--viva-dh-orange-deep);
+  font-family: var(--pixel-font);
+  font-size: 7px;
+  line-height: 1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-prompt p {
+  margin: 0;
+  color: var(--viva-dh-ink);
+  font-size: 10px;
+  line-height: 1.28;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-facts > div:first-child {
+  grid-column: 1 / -1;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal {
+  gap: 3px;
+  padding: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-signal strong {
+  font-size: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-map {
+  gap: 7px;
+  padding: 10px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack {
+  gap: 4px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack span {
+  position: relative;
+  padding: 7px;
+  font-size: 7px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-asset-stack span:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  right: 5px;
+  bottom: -8px;
+  z-index: 2;
+  color: var(--viva-dh-orange);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-learning-note {
+  margin: 0;
+  padding: 4px 6px;
+  border-top: 1px solid color-mix(in oklab, var(--viva-dh-ink) 30%, transparent);
+  font-size: 7px;
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"] .case-page-copy,
+  .screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] .case-page-copy {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+    grid-template-rows: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-facts > div:first-child {
+    grid-column: auto;
+  }
+}
+
+/* Responsive audit: P3/P4 need to collapse as a complete Viva surface.
+ * These rules intentionally live after the formal desktop refinement above;
+ * otherwise its fixed three-column grid wins over the earlier breakpoints. */
+@media (max-width: 900px) {
+  .crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  .crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+  .screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  .screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+  .cabinet-body:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  .cabinet-body:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+  .arcade-cabinet:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  .arcade-cabinet:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  .screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-rows: auto auto !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-loop"],
+  .screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] {
+    align-self: start !important;
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-rows: auto !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-loop-page,
+  .screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+    height: auto !important;
+    min-height: 0 !important;
+    grid-template-rows: auto auto !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-flow,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto auto !important;
+    align-content: start;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-rail,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-rail {
+    display: flex !important;
+    align-items: stretch;
+    gap: 6px;
+    min-width: 0;
+    min-height: 0;
+    padding: 3px 3px 7px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+    flex: 0 0 clamp(126px, 30vw, 156px);
+    min-height: 74px !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+    flex-basis: clamp(132px, 32vw, 172px);
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-workbench,
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-principle-panel,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-detail,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-map {
+    grid-column: auto !important;
+    width: auto;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-workbench {
+    grid-template-rows: auto auto !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-workbench-body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage {
+    height: auto !important;
+    min-height: 0 !important;
+    align-items: start;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage-image {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+    aspect-ratio: 3 / 4;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-choice-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-voice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-actions {
+    align-items: stretch;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-actions .viva-dh-button {
+    flex: 1 1 120px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-upload-state {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-upload-state span {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-facts {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-facts > div:first-child {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-voice-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-dh-step-card,
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-card {
+    flex-basis: 118px;
+  }
+}
+
+/* P4 contains a decision readout rather than a fixed-height application
+ * canvas. Let its evidence grow with the copy so the validation signal is
+ * never hidden behind an internal scrollbar on wide screens. */
+.screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+.crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+.screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+.cabinet-body:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+.arcade-cabinet:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"],
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page,
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] {
+  grid-template-rows: auto !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+  grid-template-rows: auto auto !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+  grid-template-rows: auto !important;
+  align-items: stretch;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-logic-detail {
+  overflow: visible !important;
+}
+
+/* P4 uses the same arcade viewport as the other Viva pages. The previous
+ * evidence-first override let this page grow with its copy, which made the
+ * cabinet jump when navigating between pages. Remove the redundant page
+ * introduction and put the decision surface back inside the fixed canvas. */
+.screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] .case-page-copy {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  .screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: 446.992px !important;
+    min-height: 0 !important;
+    grid-template-rows: 35.3223px 372.686px !important;
+    overflow: hidden !important;
+  }
+
+  .crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: 451.992px !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: 476.992px !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .cabinet-body:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]),
+  .arcade-cabinet:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .case-page-frame.has-viva-page[data-page-type="viva-learning"] {
+    height: 372.686px !important;
+    min-height: 0 !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    overflow: hidden !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-learning-page {
+    height: 100% !important;
+    min-height: 0 !important;
+    grid-template-rows: minmax(0, 1fr) auto !important;
+    overflow: hidden !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-flow {
+    height: 100% !important;
+    min-height: 0 !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    overflow: hidden !important;
+  }
+
+  .screen-panel-case[data-case-theme="creator"] .viva-logic-detail {
+    min-height: 0 !important;
+    overflow: auto !important;
+  }
+}
+
+/* The generated product screens have different native aspect ratios. Always
+ * crop the asset to the stage so portrait UI screens occupy the same visual
+ * frame as the character screen instead of shrinking into letterbox margins. */
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-art {
+  padding: 0 !important;
+}
+
+.screen-panel-case[data-case-theme="creator"] .viva-dh-stage-image {
+  object-fit: cover !important;
+  object-position: center !important;
+}

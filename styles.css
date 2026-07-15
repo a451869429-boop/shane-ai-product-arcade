@@ -1,0 +1,434 @@
+/*
+ * Composition order is part of the visual contract.
+ * legacy.css preserves the current accepted screen exactly; Case files are the
+ * only writable style surface for future Case iterations.
+ */
+@import url("./styles/legacy.css");
+@import url("./cases/about/styles.css");
+@import url("./cases/about/recovery-overrides.css");
+@import url("./cases/colada/styles.css");
+@import url("./cases/colada/recovery-overrides.css?v=integration-preview-20260714-5");
+@import url("./cases/dokie/styles.css");
+@import url("./cases/viva-video/styles.css");
+@import url("./cases/soundsnomad/styles.css?v=integration-preview-20260715-7");
+
+/* SHARED_CHANGE: promote Dokie's local display face to the portfolio title role. */
+@font-face {
+  font-family: "Portfolio Pixel Display";
+  src: url("./assets/dokie/fonts/PressStart2P-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Integration-only global overlay: use Colada's local font without an external request. */
+:root {
+  --font: "Colada Chinese Pixel", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pixel-font: "Colada Chinese Pixel", "Courier New", ui-monospace, monospace;
+  --display-font: "Portfolio Pixel Display", "Colada Chinese Pixel", "Courier New", ui-monospace, monospace;
+}
+
+/*
+ * Shared display-title contract
+ *
+ * Only the top display layer uses Press Start 2P. Chinese glyphs fall back to
+ * Colada's local bitmap face; body copy, controls, metrics and compact labels
+ * keep their existing Case-owned typography.
+ */
+body.arcade-page :is(
+  #hero-title,
+  .cabinet-marquee > strong,
+  .case-readout > h2,
+  .screen-panel-case h2,
+  .case-page-copy > h3,
+  .intro-hero-copy > h3,
+  .colada-project-intro > h3,
+  .colada-proof-title,
+  .dokie-brand-lockup > strong,
+  .dokie-execution-heading > h4,
+  .viva-play-title,
+  .viva-module-intro > h4,
+  .viva-dh-stage-copy > h3,
+  .viva-dh-principle-panel > h4,
+  .viva-logic-map-title,
+  .viva-logic-detail > h4,
+  .sn-system-title
+) {
+  font-family: var(--display-font) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+/* SHARED_CHANGE: remove redundant copy above the cabinet; CRT labels remain. */
+body.arcade-page .hero-meta,
+body.arcade-page .cabinet-marquee {
+  display: none;
+}
+
+/*
+ * SHARED_CHANGE: homepage Case-entry media contract.
+ * All five source headers are 1672 × 941. Keep that full 16:9 composition in
+ * the selector instead of cropping it into the legacy panoramic strip.
+ */
+.screen-panel-select .home-detail-card {
+  align-self: center;
+  height: auto;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.45fr) minmax(210px, 0.9fr);
+  grid-template-rows: auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.screen-panel-select .home-detail-card .case-visual {
+  align-self: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1672 / 941;
+  background: oklch(0.055 0.025 145);
+}
+
+.screen-panel-select .home-detail-card .case-visual-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.screen-panel-select .home-detail-card:hover .case-visual-image,
+.screen-panel-select .home-detail-card:focus-within .case-visual-image {
+  transform: none;
+}
+
+.screen-panel-select .home-detail-card .case-readout {
+  align-self: stretch;
+  justify-content: center;
+}
+
+.screen-panel-select .home-detail-card .case-readout h1 {
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.12;
+}
+
+body[data-screen-mode="select"][data-active-case="indie"]
+  .home-detail-card .case-readout h1 {
+  font-size: clamp(18px, 1.4vw, 20px);
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.screen-panel-select .home-detail-card .screen-play-button {
+  justify-self: stretch;
+  width: 100%;
+}
+
+.screen-panel-select .screen-play-button > span {
+  color: inherit;
+}
+
+@media (max-width: 760px) {
+  .screen-panel-select .home-detail-card {
+    grid-template-columns: minmax(0, 1.2fr) minmax(150px, 0.8fr);
+    gap: 8px;
+  }
+
+  .screen-panel-select .home-detail-card .case-readout h1 {
+    font-size: clamp(18px, 3.45vw, 25px);
+  }
+}
+
+@media (max-width: 420px) {
+  .screen-panel-select .home-detail-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    min-height: 0;
+    gap: 8px;
+  }
+
+  .screen-panel-select .home-detail-card .case-readout {
+    align-self: auto;
+  }
+
+  .screen-panel-select .home-detail-card .case-readout h1 {
+    font-size: clamp(22px, 8vw, 28px);
+  }
+}
+
+/* SHARED_CHANGE: user-gated CRT boot sequence and global soundtrack control. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.music-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 2px solid currentColor;
+  border-radius: 0;
+  color: var(--screen);
+  background: oklch(0.075 0.025 145);
+  box-shadow: 3px 3px 0 oklch(0.02 0.01 145);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end), color 120ms linear, background-color 120ms linear;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  filter: brightness(1.12);
+}
+
+.music-toggle:active,
+.music-toggle.is-pressed {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.music-toggle[aria-pressed="true"] {
+  color: var(--screen-ink);
+  background: var(--screen);
+}
+
+.music-toggle:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.7);
+  opacity: 0.58;
+}
+
+.music-toggle-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 14px;
+  height: 12px;
+}
+
+.music-toggle-bars i {
+  display: block;
+  width: 3px;
+  height: 4px;
+  background: currentColor;
+  transform-origin: center bottom;
+}
+
+.music-toggle-bars i:nth-child(2) {
+  height: 9px;
+}
+
+.music-toggle-bars i:nth-child(3) {
+  height: 6px;
+}
+
+.music-toggle[aria-pressed="true"] .music-toggle-bars i {
+  animation: music-bar-hop 620ms steps(3, end) infinite;
+}
+
+.music-toggle[aria-pressed="true"] .music-toggle-bars i:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.music-toggle[aria-pressed="true"] .music-toggle-bars i:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.crt-boot-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  background: oklch(0.025 0.01 145);
+}
+
+.crt-boot-overlay::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: oklch(0.96 0.09 128);
+  box-shadow: 0 0 8px oklch(0.9 0.22 130);
+  opacity: 0;
+  transform: scaleX(0.02) scaleY(1);
+  animation: crt-idle-line 2200ms steps(2, end) infinite;
+}
+
+.crt-boot-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0 12%, oklch(0.88 0.22 130 / 0.36) 12% 38%, transparent 38% 64%, oklch(0.72 0.19 300 / 0.28) 64% 82%, transparent 82%),
+    repeating-linear-gradient(0deg, transparent 0 6px, oklch(1 0 0 / 0.14) 6px 8px);
+  opacity: 0;
+  animation: crt-idle-glitch 2800ms steps(2, end) infinite;
+}
+
+.crt-start-button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 178px;
+  min-height: 64px;
+  padding: 13px 22px;
+  border: 3px solid oklch(0.9 0.22 130);
+  border-radius: 0;
+  color: oklch(0.94 0.24 130);
+  background: oklch(0.055 0.025 145 / 0.96);
+  box-shadow: 6px 6px 0 oklch(0.48 0.18 130), 0 0 18px oklch(0.78 0.21 130 / 0.24);
+  font-family: var(--display-font);
+  font-size: clamp(12px, 1.45vw, 18px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  animation: crt-start-prompt 1100ms steps(2, end) infinite;
+}
+
+.crt-start-button span {
+  color: oklch(0.78 0.22 130);
+  font-family: var(--pixel-font);
+  font-size: 18px;
+}
+
+.crt-start-button:hover,
+.crt-start-button:focus-visible {
+  outline: 3px solid oklch(0.98 0.12 125);
+  outline-offset: 5px;
+  filter: brightness(1.18);
+}
+
+.crt-start-button:active {
+  transform: translate(5px, 5px);
+  box-shadow: 1px 1px 0 oklch(0.48 0.18 130);
+}
+
+.crt-boot-overlay.is-starting {
+  pointer-events: none;
+  animation: crt-boot-shell 1200ms steps(1, end) forwards;
+}
+
+.crt-boot-overlay.is-starting .crt-start-button {
+  visibility: hidden;
+  opacity: 0;
+  animation: none;
+}
+
+.crt-boot-overlay.is-starting::before {
+  animation: crt-boot-line 760ms steps(5, end) 90ms forwards;
+}
+
+.crt-boot-overlay.is-starting::after {
+  animation: crt-boot-glitch 520ms steps(3, end) 430ms forwards;
+}
+
+body[data-experience="off"] .control-panel,
+body[data-experience="starting"] .control-panel {
+  filter: saturate(0.35) brightness(0.58);
+  pointer-events: none;
+}
+
+@keyframes crt-start-prompt {
+  0%, 100% { transform: translate(0, 0); filter: brightness(0.9); }
+  50% { transform: translate(-2px, -2px); filter: brightness(1.18); }
+}
+
+@keyframes crt-idle-line {
+  0%, 78%, 100% { opacity: 0.04; transform: translateY(-14vh) scaleX(0.18); }
+  82% { opacity: 0.42; transform: translateY(8vh) scaleX(0.72); }
+  86% { opacity: 0.12; transform: translateY(19vh) scaleX(0.34); }
+}
+
+@keyframes crt-idle-glitch {
+  0%, 84%, 100% { opacity: 0; transform: translateX(0); }
+  87% { opacity: 0.14; transform: translateX(-5px); }
+  90% { opacity: 0.05; transform: translateX(4px); }
+}
+
+@keyframes crt-boot-shell {
+  0%, 38% { opacity: 1; background: oklch(0.025 0.01 145); }
+  46% { opacity: 1; background: oklch(0.86 0.2 130 / 0.3); }
+  53% { opacity: 0.22; }
+  58% { opacity: 0.82; }
+  63% { opacity: 0.14; }
+  69% { opacity: 0.38; }
+  78% { opacity: 0.08; }
+  100% { visibility: hidden; opacity: 0; }
+}
+
+@keyframes crt-boot-line {
+  0%, 12% { opacity: 0; transform: scaleX(0.02) scaleY(1); }
+  24% { opacity: 1; transform: scaleX(0.1) scaleY(1); }
+  46% { opacity: 1; transform: scaleX(0.96) scaleY(1); }
+  64% { opacity: 0.72; transform: scaleX(1) scaleY(110); }
+  82%, 100% { opacity: 0; transform: scaleX(1) scaleY(240); }
+}
+
+@keyframes crt-boot-glitch {
+  0%, 18% { opacity: 0; transform: translateX(0); }
+  26% { opacity: 0.5; transform: translateX(-8px); }
+  42% { opacity: 0.16; transform: translateX(6px); }
+  55% { opacity: 0.42; transform: translateX(-3px); }
+  70%, 100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes music-bar-hop {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+
+@media (max-width: 760px) {
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .music-toggle {
+    min-height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-start-button,
+  .crt-boot-overlay::before,
+  .crt-boot-overlay::after {
+    animation: none;
+  }
+
+  .crt-boot-overlay.is-starting {
+    animation: crt-boot-reduced 180ms ease-out forwards;
+  }
+
+  .crt-boot-overlay.is-starting::before,
+  .crt-boot-overlay.is-starting::after {
+    display: none;
+  }
+
+  .music-toggle-bars i {
+    animation: none !important;
+  }
+}
+
+@keyframes crt-boot-reduced {
+  from { opacity: 1; }
+  to { visibility: hidden; opacity: 0; }
+}

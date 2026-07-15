@@ -1,0 +1,199 @@
+/* Colada ownership surface. New Colada-only CSS belongs here. */
+/* Zpix (最像素) — local CJK bitmap font for this personal portfolio case. */
+@font-face {
+  font-family: "Colada Chinese Pixel";
+  src: url("../../assets/colada/zpix.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
+}
+
+/*
+ * Colada pixel scene refinement.
+ * Keep product screenshots crisp; make the surrounding case surface feel like
+ * a deliberate 16-bit journal screen through flat tiles and clear type roles.
+ */
+.screen-panel-case[data-case-theme="colada"] {
+  --colada-body-font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --colada-cjk-font: "Colada Chinese Pixel";
+  --colada-display-font: "Press Start 2P", "Silkscreen", var(--colada-body-font);
+  --colada-control-font: "Silkscreen", "Press Start 2P", ui-monospace, monospace;
+  --colada-pixel-surface: oklch(0.965 0.035 345);
+  --colada-pixel-surface-deep: oklch(0.895 0.09 345);
+  /* Keep the tile readable as texture, not as a competing foreground grid. */
+  --colada-pixel-grid: rgb(86 39 75 / 0.06);
+  --colada-pixel-grid-soft: rgb(255 255 255 / 0.16);
+  --colada-pixel-grid-surface: rgb(86 39 75 / 0.07);
+  --colada-pixel-grid-sheen: rgb(255 255 255 / 0.10);
+  --colada-pixel-shadow: oklch(0.33 0.11 326);
+  --colada-pixel-unit: 4px;
+  position: relative !important;
+  isolation: isolate;
+  color: var(--colada-ink) !important;
+  font-family: var(--colada-cjk-font), var(--colada-body-font) !important;
+  background-color: var(--colada-pixel-surface-deep) !important;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 15px, var(--colada-pixel-grid) 15px 16px),
+    repeating-linear-gradient(90deg, transparent 0 15px, var(--colada-pixel-grid) 15px 16px),
+    repeating-linear-gradient(0deg, var(--colada-pixel-grid-soft) 0 4px, transparent 4px 8px) !important;
+  background-size: 16px 16px, 16px 16px, 8px 8px !important;
+  background-position: 0 0, 0 0, 0 0 !important;
+}
+
+.screen-panel-case[data-case-theme="colada"]::before {
+  z-index: -1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--colada-accent) !important;
+  box-shadow:
+    12px 0 0 var(--colada-yellow),
+    24px 0 0 var(--colada-mint),
+    0 12px 0 var(--colada-lilac),
+    12px 12px 0 var(--colada-pixel-shadow) !important;
+}
+
+.screen-panel-case[data-case-theme="colada"]::after {
+  z-index: -1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--colada-mint) !important;
+  box-shadow:
+    -12px 0 0 var(--colada-yellow),
+    -24px 0 0 var(--colada-accent),
+    0 -12px 0 var(--colada-lilac),
+    -12px -12px 0 var(--colada-pixel-shadow) !important;
+}
+
+.case-page-frame.has-colada-page {
+  min-width: 0 !important;
+  color: var(--colada-ink) !important;
+  font-family: var(--colada-cjk-font), var(--colada-body-font) !important;
+  background-color: var(--colada-pixel-surface) !important;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 15px, var(--colada-pixel-grid) 15px 16px),
+    repeating-linear-gradient(90deg, transparent 0 15px, var(--colada-pixel-grid) 15px 16px),
+    repeating-linear-gradient(0deg, var(--colada-pixel-grid-soft) 0 4px, transparent 4px 8px) !important;
+  background-size: 16px 16px, 16px 16px, 8px 8px !important;
+  background-position: 0 0, 0 0, 0 0 !important;
+}
+
+/* Flat tiled work surfaces carry the pixel register without touching evidence images. */
+.case-page-frame.has-colada-page .colada-canvas-board,
+.case-page-frame.has-colada-page .colada-product-deck,
+.case-page-frame.has-colada-page .colada-case-media,
+.case-page-frame.has-colada-page .colada-results-showcase,
+.case-page-frame.has-colada-page .colada-generated-sheet {
+  background-color: var(--colada-pixel-surface-deep) !important;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 15px, var(--colada-pixel-grid-surface) 15px 16px),
+    repeating-linear-gradient(90deg, transparent 0 15px, var(--colada-pixel-grid-surface) 15px 16px),
+    repeating-linear-gradient(45deg, var(--colada-pixel-grid-sheen) 0 4px, transparent 4px 8px) !important;
+  background-size: 16px 16px, 16px 16px, 8px 8px !important;
+}
+
+/* The title role is bitmap-first; Chinese falls back to the readable body face. */
+.case-page-frame.has-colada-page h3,
+.case-page-frame.has-colada-page h4,
+.case-page-frame.has-colada-page .colada-proof-title {
+  font-family: var(--colada-cjk-font), var(--colada-display-font), var(--colada-body-font) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.015em !important;
+  line-height: 1.18 !important;
+  text-rendering: geometricPrecision;
+  font-variant-ligatures: none;
+  text-shadow: 2px 0 0 var(--colada-lilac) !important;
+}
+
+/* Short English labels and controls use the more legible bitmap UI face. */
+.case-page-frame.has-colada-page .colada-intro-kicker,
+.case-page-frame.has-colada-page .colada-phone-caption,
+.case-page-frame.has-colada-page .colada-product-readout strong,
+.case-page-frame.has-colada-page .colada-case-kicker,
+.case-page-frame.has-colada-page .colada-case-route,
+.case-page-frame.has-colada-page .colada-modal-image-label,
+.case-page-frame.has-colada-page .colada-canvas-label,
+.case-page-frame.has-colada-page .journal-control-label,
+.case-page-frame.has-colada-page .colada-journal-step-number,
+.case-page-frame.has-colada-page .colada-journal-steps strong,
+.case-page-frame.has-colada-page .colada-showcase-label,
+.case-page-frame.has-colada-page .colada-showcase-stamp,
+.case-page-frame.has-colada-page .colada-proof-label,
+.case-page-frame.has-colada-page .colada-proof-metric-label,
+.case-page-frame.has-colada-page .colada-proof-metric-value,
+.case-page-frame.has-colada-page .colada-product-dots button,
+.case-page-frame.has-colada-page .colada-material-stamp,
+.case-page-frame.has-colada-page .journal-template-copy strong,
+.case-page-frame.has-colada-page .colada-journey-button,
+.case-page-frame.has-colada-page .colada-view-button,
+.case-page-frame.has-colada-page .colada-generate,
+.case-page-frame.has-colada-page .colada-result-demo-label {
+  font-family: var(--colada-control-font) !important;
+  font-variant-ligatures: none;
+  text-rendering: geometricPrecision;
+}
+
+.case-page-frame.has-colada-page .colada-intro-kicker,
+.case-page-frame.has-colada-page .colada-case-kicker,
+.case-page-frame.has-colada-page .colada-canvas-label,
+.case-page-frame.has-colada-page .journal-control-label,
+.case-page-frame.has-colada-page .colada-showcase-label,
+.case-page-frame.has-colada-page .colada-proof-label {
+  font-size: clamp(9px, 1vw, 12px) !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.25 !important;
+}
+
+.case-page-frame.has-colada-page .colada-case-route,
+.case-page-frame.has-colada-page .colada-showcase-stamp,
+.case-page-frame.has-colada-page .colada-result-demo-label {
+  font-size: clamp(8px, 0.85vw, 10px) !important;
+  letter-spacing: 0.06em !important;
+}
+
+.case-page-frame.has-colada-page .colada-intro-summary,
+.case-page-frame.has-colada-page .colada-intro-role,
+.case-page-frame.has-colada-page .colada-case-copy p,
+.case-page-frame.has-colada-page .colada-proof-copy,
+.case-page-frame.has-colada-page .colada-proof-product,
+.case-page-frame.has-colada-page .colada-stage-note {
+  font-family: var(--colada-cjk-font), var(--colada-body-font) !important;
+  font-size: clamp(10px, 1.05vw, 14px) !important;
+  line-height: 1.42 !important;
+}
+
+.case-page-frame.has-colada-page .colada-journal-steps p,
+.case-page-frame.has-colada-page .colada-material-toggle small,
+.case-page-frame.has-colada-page .journal-template-copy em,
+.case-page-frame.has-colada-page .colada-product-readout span,
+.case-page-frame.has-colada-page .colada-proof-metric-note,
+.case-page-frame.has-colada-page .colada-proof-source {
+  font-family: var(--colada-cjk-font), var(--colada-body-font) !important;
+  line-height: 1.35 !important;
+}
+
+/* P4's page headline reads as one desktop line; allow it to reflow only on narrow screens. */
+.case-page-frame.has-colada-page[data-page-type="colada-result"] > .case-page-copy > h3 {
+  font-size: clamp(19px, 2.1vw, 28px) !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 700px) {
+  .screen-panel-case[data-case-theme="colada"],
+  .case-page-frame.has-colada-page {
+    background-size: 12px 12px, 12px 12px, 8px 8px !important;
+  }
+
+  .case-page-frame.has-colada-page .colada-intro-summary,
+  .case-page-frame.has-colada-page .colada-intro-role,
+  .case-page-frame.has-colada-page .colada-case-copy p,
+  .case-page-frame.has-colada-page .colada-proof-copy,
+  .case-page-frame.has-colada-page .colada-proof-product,
+  .case-page-frame.has-colada-page .colada-stage-note {
+    font-size: 10px !important;
+  }
+
+  .case-page-frame.has-colada-page[data-page-type="colada-result"] > .case-page-copy > h3 {
+    font-size: clamp(18px, 5.5vw, 24px) !important;
+    white-space: normal !important;
+  }
+}

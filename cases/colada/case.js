@@ -1,0 +1,128 @@
+// Case-owned definition. Keep Colada changes in this directory.
+export const definition = Object.freeze({
+    id: "colada",
+    kicker: "AI 图像 · 0→1",
+    title: "Colada",
+    summary: "0→1 AI 贴纸 / 拼贴产品，面向有审美但缺少手绘和排版能力的海外女性创作者。",
+    status: "Colada 产品界面、三类用户案例、手账制作链路与结果证据。",
+    visual: "sticker",
+    headerImage: "assets/headers/colada-header-pixel.png",
+    headerAlt: "像素风 Colada 拼贴与贴纸创作工作台",
+    pages: [
+      {
+        type: "colada-intro",
+        label: "项目介绍",
+        title: "AI 贴纸、拼贴与手账产品",
+        summary: "帮助有审美表达欲但缺少手绘 / 排版能力的用户，把照片变成可分享视觉资产。",
+        screens: [
+          {
+            src: "assets/colada/产品界面1.png",
+            alt: "Colada 产品首页，展示热门拼贴、热门贴纸和作品展示",
+            label: "首页 / 作品展示",
+            caption: "首页把热门拼贴、热门贴纸和作品展示放在同一条探索路径里。",
+          },
+          {
+            src: "assets/colada/产品界面2.png",
+            alt: "Colada 生成后分享页和生成前后对比展示",
+            label: "生成前 / 生成后",
+            caption: "生成后的分享页把生成前后对比和继续编辑的入口放在一起。",
+          },
+          {
+            src: "assets/colada/产品界面3.png",
+            alt: "Colada 手账结果编辑和导出界面",
+            label: "编辑 / 导出",
+            caption: "结果页保留编辑、保存和导出，让生成不止停在一张图片。",
+          },
+          {
+            src: "assets/colada/产品界面4.png",
+            alt: "Colada 欢迎引导首屏",
+            label: "欢迎引导",
+            caption: "欢迎首屏说明 Colada 从审美表达和低门槛创作切入。",
+          },
+        ],
+        role: "我的角色：负责 0→1 产品规划，推进选图直达生成、首页与底导重构，并协同增长与技术落地。",
+        chips: ["AI 图像", "欧美女性创作者", "贴纸拼贴", "工作流 / 提示词"],
+      },
+      {
+        type: "colada-showcase",
+        label: "用户案例",
+        title: "三类视觉创作场景",
+        cases: [
+          {
+            title: "手账人群",
+            kicker: "手账 / 计划",
+            copy: "把照片、日期、短句和贴纸组合成手账、计划页和情绪板。",
+            icon: "▦",
+            images: ["assets/colada/手帐案例1.jpg", "assets/colada/手帐案例2.jpg"],
+          },
+          {
+            title: "拼贴人群",
+            kicker: "审美拼贴",
+            copy: "把人物照片、纸张、涂鸦和装饰元素组合成审美拼贴页。",
+            icon: "✦",
+            images: ["assets/colada/拼贴案例1.png", "assets/colada/拼贴案例2.png"],
+          },
+          {
+            title: "贴纸人群",
+            kicker: "贴纸包",
+            copy: "把照片转成可复用贴纸、表情包和分享素材。",
+            icon: "✚",
+            images: ["assets/colada/贴纸案例1.png", "assets/colada/贴纸案例2.png"],
+          },
+        ],
+      },
+      {
+        type: "colada-journal",
+        label: "手账制作器",
+        title: "画板里完成从素材到手账页",
+        summary: "从画板放入素材，选择一套视觉语气，再生成一张可分享的横向手账页。",
+        materials: [
+          { id: "photo", icon: "▣", title: "图片", copy: "城市照片 / 视觉锚点", src: "assets/colada/colada-travel-city.jpg", alt: "佛罗伦萨城市全景照片" },
+          { id: "sticker", icon: "✦", title: "贴纸", copy: "人物贴纸 / 叠加语气", src: "assets/colada/colada-travel-portrait.jpg", alt: "人物与雕像照片贴纸" },
+          { id: "text", icon: "T", title: "文字", copy: "Firenze 周末" },
+          { id: "date", icon: "▤", title: "日期", copy: "06.21 · 周六" },
+        ],
+        templates: [
+          { id: "soft-planner", icon: "▦", title: "轻柔计划", desc: "清爽网格", accent: "oklch(0.82 0.11 18)", resultSrc: "assets/colada/colada-journal-travel-soft-planner.png" },
+          { id: "scrapbook", icon: "✦", title: "剪贴手账", desc: "纸张拼贴", accent: "oklch(0.82 0.12 62)", resultSrc: "assets/colada/colada-journal-travel-scrapbook.png" },
+          { id: "sticker-note", icon: "✚", title: "贴纸便签", desc: "可爱标签", accent: "oklch(0.78 0.14 330)", resultSrc: "assets/colada/colada-journal-travel-sticker-note.png" },
+        ],
+      },
+      {
+        type: "colada-result",
+        label: "结果与影响",
+        title: "从 0→1 上线到产品链路沉淀",
+        visual: {
+          src: "assets/colada/colada-journal-travel-soft-planner.png",
+          alt: "Colada 轻柔计划横向电子手帐生成结果",
+          caption: "真实生成的横向电子手帐：同一组画板素材，分别落成三种可分享视觉风格。",
+        },
+        blocks: [
+          {
+            kind: "reach",
+            eyebrow: "增长 / 触达",
+            headline: "DAU",
+            value: "3,000",
+            copy: "Colada 上线 2 个月后的用户规模记录。",
+            evidence: "来源：简历项目经历。",
+          },
+          {
+            kind: "efficiency",
+            eyebrow: "增长 / 效率",
+            headline: "ROAS 提升至",
+            value: "20%",
+            copy: "冷启动投放与产品增长协同后的效率结果。",
+            evidence: "来源：简历项目经历。",
+          },
+          {
+            kind: "product",
+            eyebrow: "产品 / 0→1",
+            headline: "从洞察到上线",
+            value: "0→1",
+            copy: "面向欧美女性创作者，推进后端生成 workflow 与 system prompt。",
+            evidence: "协同增长与技术，推进产品和商业化落地。",
+          },
+        ],
+      },
+    ],
+  });

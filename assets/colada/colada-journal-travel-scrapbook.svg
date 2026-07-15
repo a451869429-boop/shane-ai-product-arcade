@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Weekend in Firenze · Scrapbook</title>
+  <desc id="desc">A landscape scrapbook page built from travel photos, notes, dates and playful stickers.</desc>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#876b9a" stroke-opacity=".16" stroke-width="2"/><circle cx="7" cy="7" r="2" fill="#d8735b" fill-opacity=".25"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="10" dy="12" stdDeviation="0" flood-color="#31213f" flood-opacity=".24"/></filter>
+    <clipPath id="city"><rect x="105" y="190" width="690" height="400" rx="8"/></clipPath>
+    <clipPath id="person"><rect x="895" y="185" width="290" height="430" rx="8"/></clipPath>
+    <clipPath id="portrait"><rect x="1225" y="280" width="265" height="350" rx="8"/></clipPath>
+  </defs>
+  <rect width="1600" height="900" fill="#fff1d0"/>
+  <rect x="30" y="30" width="1540" height="840" rx="18" fill="url(#grid)" stroke="#31213f" stroke-width="12"/>
+  <path d="M75 125H1525" stroke="#31213f" stroke-width="4" stroke-dasharray="4 18" opacity=".55"/>
+  <text x="82" y="96" fill="#31213f" font-family="Courier New, monospace" font-size="25" font-weight="700" letter-spacing="5">COLADA / JOURNAL MAKER</text>
+  <rect x="1265" y="62" width="235" height="48" rx="4" fill="#b89ad4" stroke="#31213f" stroke-width="4" transform="rotate(3 1382 86)"/>
+  <text x="1292" y="94" fill="#31213f" font-family="Courier New, monospace" font-size="24" font-weight="700">06.21 · SAT</text>
+  <g filter="url(#shadow)" transform="rotate(-3 450 390)"><rect x="88" y="170" width="724" height="460" fill="#fffaf0" stroke="#31213f" stroke-width="5"/><image x="105" y="190" width="690" height="400" preserveAspectRatio="xMidYMid slice" xlink:href="colada-travel-city.jpg" clip-path="url(#city)"/><rect x="105" y="190" width="690" height="400" fill="none" stroke="#fffaf0" stroke-width="12"/></g>
+  <rect x="210" y="143" width="175" height="54" rx="4" fill="#d8735b" opacity=".92" transform="rotate(-12 297 170)"/>
+  <text x="144" y="663" fill="#31213f" font-family="Courier New, monospace" font-size="24" font-weight="700">VIEW FROM THE DUOMO</text>
+  <g filter="url(#shadow)" transform="rotate(4 1040 390)"><rect x="875" y="165" width="330" height="475" fill="#fffaf0" stroke="#31213f" stroke-width="5"/><image x="895" y="185" width="290" height="430" preserveAspectRatio="xMidYMid slice" xlink:href="colada-travel-person.jpg" clip-path="url(#person)"/><rect x="895" y="185" width="290" height="430" fill="none" stroke="#fffaf0" stroke-width="12"/></g>
+  <rect x="883" y="157" width="180" height="48" fill="#b89ad4" opacity=".95" transform="rotate(5 973 181)"/>
+  <text x="905" y="188" fill="#31213f" font-family="Courier New, monospace" font-size="21" font-weight="700">WALK / LOOK / SAVE</text>
+  <g filter="url(#shadow)" transform="rotate(-5 1358 455)"><rect x="1205" y="260" width="305" height="395" fill="#fffaf0" stroke="#31213f" stroke-width="5"/><image x="1225" y="280" width="265" height="350" preserveAspectRatio="xMidYMid slice" xlink:href="colada-travel-portrait.jpg" clip-path="url(#portrait)"/><rect x="1225" y="280" width="265" height="350" fill="none" stroke="#fffaf0" stroke-width="12"/></g>
+  <rect x="1270" y="665" width="230" height="78" fill="#efb85d" stroke="#31213f" stroke-width="4" transform="rotate(2 1385 704)"/>
+  <text x="1290" y="700" fill="#31213f" font-family="Courier New, monospace" font-size="23" font-weight="700">SUNNY / SLOW /</text><text x="1290" y="728" fill="#31213f" font-family="Courier New, monospace" font-size="23" font-weight="700">A LITTLE LOST</text>
+  <g fill="#d8735b" stroke="#31213f" stroke-width="4"><path d="M835 720l15 30 33 4-24 22 7 33-31-16-30 16 7-33-24-22 33-4z" transform="rotate(-12 835 754)"/><circle cx="111" cy="758" r="27" fill="#b89ad4"/><path d="M109 736v44M87 758h44" fill="none"/></g>
+  <g fill="none" stroke="#31213f" stroke-width="4" opacity=".7"><path d="M780 700q55-40 104 0t104 0"/><path d="M785 718q55-40 104 0t104 0"/></g>
+  <text x="96" y="812" fill="#31213f" font-family="Courier New, monospace" font-size="30" font-weight="700" letter-spacing="4">WEEKEND NOTES</text><text x="1015" y="812" fill="#31213f" font-family="Courier New, monospace" font-size="24" font-weight="700">FIRENZE · 2025</text>
+</svg>
