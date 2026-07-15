@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -12,7 +12,7 @@
       content="Shane 的 AI Native Product Portfolio，以复古街机柜终端展示 AI 图像、办公 Agent、创作工具和独立项目案例。"
     >
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="styles.css?v=integration-preview-20260715-7">
+    <link rel="stylesheet" href="styles.css?v=integration-preview-20260715-15">
   </head>
   <body class="arcade-page" data-active-case="about" data-screen-mode="select" data-experience="off">
     <a class="skip-link" href="#main">跳到正文</a>
@@ -60,10 +60,13 @@
             <div class="screen-bezel">
               <div class="crt-screen" aria-live="polite">
                 <div class="crt-boot-overlay" data-crt-boot>
-                  <button class="crt-start-button" type="button" data-crt-start aria-label="启动电视并播放音乐">
-                    <span aria-hidden="true">▶</span>
-                    <strong>Start</strong>
-                  </button>
+                  <div class="crt-start-gate">
+                    <button class="crt-start-button" type="button" data-crt-start aria-label="启动电视并播放音乐">
+                      <span aria-hidden="true">▶</span>
+                      <strong>Start</strong>
+                    </button>
+                    <p class="crt-mobile-advisory">建议电脑web打开网页</p>
+                  </div>
                 </div>
                 <section class="screen-panel screen-panel-select" data-screen-panel="select" inert>
                   <div class="screen-chrome" aria-hidden="true">

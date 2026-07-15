@@ -280,6 +280,15 @@ body[data-screen-mode="select"][data-active-case="indie"]
   animation: crt-idle-glitch 2800ms steps(2, end) infinite;
 }
 
+.crt-start-gate {
+  display: contents;
+}
+
+.crt-mobile-advisory {
+  display: none;
+  margin: 0;
+}
+
 .crt-start-button {
   position: relative;
   z-index: 2;
@@ -331,6 +340,11 @@ body[data-screen-mode="select"][data-active-case="indie"]
   visibility: hidden;
   opacity: 0;
   animation: none;
+}
+
+.crt-boot-overlay.is-starting .crt-mobile-advisory {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .crt-boot-overlay.is-starting::before {
@@ -431,4 +445,405 @@ body[data-experience="starting"] .control-panel {
 @keyframes crt-boot-reduced {
   from { opacity: 1; }
   to { visibility: hidden; opacity: 0; }
+}
+
+/*
+ * Mobile-only shell adaptation.
+ * Keep the desktop cabinet and every Case-owned visual untouched. Phones use
+ * a compact header, a fixed CRT reading viewport and a single-row control deck
+ * so long Case pages scroll inside the screen instead of stretching the shell.
+ */
+@media (max-width: 700px) {
+  body.arcade-page {
+    padding-right: env(safe-area-inset-right);
+    padding-left: env(safe-area-inset-left);
+  }
+
+  body.arcade-page .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    min-height: 58px;
+    padding: 7px 10px;
+    padding-top: max(7px, env(safe-area-inset-top));
+  }
+
+  body.arcade-page .brand-mark {
+    min-width: 0;
+  }
+
+  body.arcade-page .brand-mark span {
+    font-size: 12px;
+  }
+
+  body.arcade-page .brand-mark small {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  body.arcade-page .header-actions {
+    width: auto;
+    justify-content: flex-end;
+    gap: 0;
+  }
+
+  body.arcade-page .header-mode {
+    display: none;
+  }
+
+  body.arcade-page .music-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 8px;
+    font-size: 8px;
+  }
+
+  body.arcade-page .arcade-hero {
+    min-height: auto;
+    padding: 6px 6px max(8px, env(safe-area-inset-bottom));
+  }
+
+  body.arcade-page .arcade-cabinet {
+    width: 100%;
+  }
+
+  body.arcade-page .cabinet-body {
+    padding: 8px 6px 6px;
+    clip-path: polygon(1% 0, 99% 0, 100% 7%, 99% 100%, 1% 100%, 0 7%);
+  }
+
+  body.arcade-page .screen-bezel {
+    position: relative;
+    z-index: 1;
+    min-height: 0 !important;
+    padding: 5px;
+    overflow: hidden !important;
+  }
+
+  body.arcade-page .crt-screen {
+    height: clamp(340px, calc(100svh - 236px), 560px) !important;
+    min-height: 0 !important;
+    max-height: 560px !important;
+    overflow: hidden !important;
+    clip-path: inset(0);
+    contain: paint;
+  }
+
+  body.arcade-page .screen-panel {
+    padding: 10px;
+  }
+
+  body.arcade-page .screen-panel-select,
+  body.arcade-page .screen-panel-case {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.arcade-page .screen-panel-case {
+    grid-template-rows: auto auto !important;
+    align-content: start;
+  }
+
+  body.arcade-page .crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  body.arcade-page .crt-screen:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: clamp(340px, calc(100svh - 236px), 560px) !important;
+    min-height: 0 !important;
+    max-height: 560px !important;
+    overflow: hidden !important;
+  }
+
+  body.arcade-page .screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  body.arcade-page .screen-bezel:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.arcade-page .screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-loop"]),
+  body.arcade-page .screen-panel-case[data-case-theme="creator"]:has(.case-page-frame.has-viva-page[data-page-type="viva-learning"]) {
+    height: 100% !important;
+    min-height: 0 !important;
+    grid-template-rows: auto auto !important;
+    align-content: start;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body.arcade-page .case-page-frame.has-soundsnomad-page[data-page-type="sounds-field"] .sounds-field-page {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.arcade-page .case-page-status {
+    position: sticky;
+    top: 0;
+  }
+
+  body.arcade-page .control-panel {
+    position: relative;
+    z-index: 2;
+    gap: 5px;
+    padding: 5px 6px 6px;
+  }
+
+  body.arcade-page .control-buttons {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+    padding: 3px;
+    overflow: hidden;
+  }
+
+  body.arcade-page .case-puck {
+    grid-template-columns: 12px minmax(0, 1fr);
+    gap: 3px;
+    min-height: 44px;
+    padding: 4px;
+  }
+
+  body.arcade-page .case-puck span {
+    width: 12px;
+    height: 12px;
+  }
+
+  body.arcade-page .case-puck b {
+    font-size: 7px;
+    line-height: 1.08;
+  }
+
+  body.arcade-page .transport-controls {
+    grid-template-columns: 44px minmax(100px, 1fr) minmax(82px, 0.72fr);
+    gap: 6px;
+    min-height: 52px;
+    padding: 3px 5px;
+  }
+
+  body.arcade-page .stop-button {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  body.arcade-page .stop-button span {
+    width: 26px;
+    height: 26px;
+  }
+
+  body.arcade-page .direction-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 5px;
+    padding: 2px;
+  }
+
+  body.arcade-page .direction-button,
+  body.arcade-page .start-button {
+    min-height: 44px;
+  }
+
+  body.arcade-page .start-button {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  body.arcade-page .speaker-row {
+    display: none;
+  }
+
+  body.arcade-page .crt-mobile-advisory {
+    display: block;
+    max-width: 240px;
+    color: oklch(0.86 0.12 130);
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  body.arcade-page .crt-start-gate {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+  }
+
+  body.arcade-page .screen-panel-select .home-card-layout {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 7px;
+    overflow: visible;
+  }
+
+  body.arcade-page .screen-panel-select .home-card-rail {
+    min-height: 132px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body.arcade-page .screen-panel-select .home-card-rail .home-stack-card {
+    left: 18px;
+    right: 4px;
+    min-height: 58px;
+    padding: 6px 8px;
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="0"] {
+    transform: translate3d(5px, -50%, 58px) rotateX(0deg) rotateZ(0deg) scale(1);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="-1"] {
+    transform: translate3d(-5px, calc(-50% - 45px), 8px) rotateX(-38deg) rotateZ(-4deg) scale(0.82);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="1"] {
+    transform: translate3d(-7px, calc(-50% + 45px), 8px) rotateX(38deg) rotateZ(4deg) scale(0.82);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="-2"] {
+    transform: translate3d(-14px, calc(-50% - 82px), -58px) rotateX(-54deg) rotateZ(-7deg) scale(0.64);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="2"] {
+    transform: translate3d(-14px, calc(-50% + 82px), -58px) rotateX(54deg) rotateZ(7deg) scale(0.64);
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 7px;
+    padding: 7px;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout {
+    gap: 0;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout h1,
+  body.arcade-page[data-screen-mode="select"][data-active-case="indie"] .home-detail-card .case-readout h1 {
+    font-size: clamp(20px, 7vw, 26px);
+    line-height: 1.08;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout span {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  body.arcade-page .screen-panel-select .screen-play-button {
+    min-height: 44px;
+    margin-top: 5px;
+  }
+
+  body.arcade-page .screen-panel-select .screen-footer {
+    display: none;
+  }
+
+  body.arcade-page .screen-panel-case :is(
+    .about-track-node,
+    .practice-track-select,
+    .practice-step,
+    .colada-product-arrow,
+    .colada-product-screens button,
+    .showcase-view-button,
+    .dokie-ppt-page-button,
+    .dokie-artifact-thumbs button,
+    .viva-dh-button,
+    .viva-dh-choice,
+    .sn-primary-action,
+    .sn-device-tab
+  ) {
+    min-height: 44px !important;
+  }
+
+  body.arcade-page .screen-panel-case .sn-source-marker::before {
+    position: absolute;
+    inset: -7px;
+    content: "";
+  }
+}
+
+@media (max-width: 360px) and (max-height: 650px) {
+  body.arcade-page .site-header {
+    min-height: 54px;
+    padding-block: 5px;
+  }
+
+  body.arcade-page .screen-panel-select .home-card-rail {
+    min-height: 80px;
+  }
+
+  body.arcade-page .screen-panel-select .home-card-rail .home-stack-card {
+    min-height: 52px;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card {
+    grid-template-columns: minmax(88px, 0.8fr) minmax(0, 1.2fr);
+    grid-template-rows: auto;
+    align-self: start;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-visual {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout p {
+    font-size: 8px;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout h1,
+  body.arcade-page[data-screen-mode="select"][data-active-case="indie"] .home-detail-card .case-readout h1 {
+    font-size: 18px;
+  }
+
+  body.arcade-page .screen-panel-select .home-detail-card .case-readout span {
+    margin-top: 3px;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  body.arcade-page .screen-panel-select .screen-play-button {
+    margin-top: 4px;
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="-1"] {
+    transform: translate3d(-5px, calc(-50% - 36px), 8px) rotateX(-38deg) rotateZ(-4deg) scale(0.82);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="1"] {
+    transform: translate3d(-7px, calc(-50% + 36px), 8px) rotateX(38deg) rotateZ(4deg) scale(0.82);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="-2"] {
+    transform: translate3d(-14px, calc(-50% - 66px), -58px) rotateX(-54deg) rotateZ(-7deg) scale(0.64);
+  }
+
+  body.arcade-page .screen-panel-select .home-stack-card[data-wheel-pos="2"] {
+    transform: translate3d(-14px, calc(-50% + 66px), -58px) rotateX(54deg) rotateZ(7deg) scale(0.64);
+  }
+
+  body.arcade-page .crt-start-button {
+    min-width: 168px;
+    min-height: 58px;
+  }
+
+  body.arcade-page .crt-mobile-advisory {
+    max-width: 210px;
+    font-size: 11px;
+  }
 }
